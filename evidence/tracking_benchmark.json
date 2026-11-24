@@ -1,0 +1,250 @@
+{
+  "fixed_substeps_2": {
+    "status": "TRACKING_CANDIDATE",
+    "framesIntegrated": 7,
+    "framesRequested": 7,
+    "failure": null,
+    "saturatedJoints": [],
+    "peakActuationComponent": 18.207689699119214,
+    "fixedBase": true,
+    "initialVelocitySource": "kinematic target derivative",
+    "rootActuationAllowed": false,
+    "substeps": 2,
+    "maxKeyErrorMm": 1.0,
+    "keyMaxMm": 0.023712039277372067,
+    "keyRmsMm": 0.008852258309159339,
+    "targetRmsMm": 0.008348399570316314,
+    "targetMaxMm": 0.023712039277372067,
+    "keyErrors": [
+      {
+        "frame": 1,
+        "maxMm": 0.0
+      },
+      {
+        "frame": 4,
+        "maxMm": 0.01195832295336973
+      },
+      {
+        "frame": 7,
+        "maxMm": 0.023712039277372067
+      }
+    ],
+    "targetAngleMaxDeg": 0.0013585997742766244,
+    "maxTargetAngleDeg": 5.0,
+    "exportCollision": "NOT_CONFIGURED",
+    "flags": [],
+    "limitations": [
+      "Prescribed initial velocity; fixed base is an external support.",
+      "Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.",
+      "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+    ]
+  },
+  "fixed_substeps_4": {
+    "status": "TRACKING_CANDIDATE",
+    "framesIntegrated": 7,
+    "framesRequested": 7,
+    "failure": null,
+    "saturatedJoints": [],
+    "peakActuationComponent": 18.201386101923454,
+    "fixedBase": true,
+    "initialVelocitySource": "kinematic target derivative",
+    "rootActuationAllowed": false,
+    "substeps": 4,
+    "maxKeyErrorMm": 1.0,
+    "keyMaxMm": 0.0061429138937663655,
+    "keyRmsMm": 0.002317886790658158,
+    "targetRmsMm": 0.002199135650921861,
+    "targetMaxMm": 0.0061429138937663655,
+    "keyErrors": [
+      {
+        "frame": 1,
+        "maxMm": 0.0
+      },
+      {
+        "frame": 4,
+        "maxMm": 0.0032585274991229294
+      },
+      {
+        "frame": 7,
+        "maxMm": 0.0061429138937663655
+      }
+    ],
+    "targetAngleMaxDeg": 0.0003519630400250548,
+    "maxTargetAngleDeg": 5.0,
+    "exportCollision": "NOT_CONFIGURED",
+    "flags": [],
+    "limitations": [
+      "Prescribed initial velocity; fixed base is an external support.",
+      "Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.",
+      "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+    ]
+  },
+  "fixed_substeps_8": {
+    "status": "TRACKING_CANDIDATE",
+    "framesIntegrated": 7,
+    "framesRequested": 7,
+    "failure": null,
+    "saturatedJoints": [],
+    "peakActuationComponent": 18.200497955762792,
+    "fixedBase": true,
+    "initialVelocitySource": "kinematic target derivative",
+    "rootActuationAllowed": false,
+    "substeps": 8,
+    "maxKeyErrorMm": 1.0,
+    "keyMaxMm": 0.0015526332241300412,
+    "keyRmsMm": 0.0005886262094376848,
+    "targetRmsMm": 0.0005599434478791779,
+    "targetMaxMm": 0.0015526332241300412,
+    "keyErrors": [
+      {
+        "frame": 1,
+        "maxMm": 0.0
+      },
+      {
+        "frame": 4,
+        "maxMm": 0.0008412237521969695
+      },
+      {
+        "frame": 7,
+        "maxMm": 0.0015526332241300412
+      }
+    ],
+    "targetAngleMaxDeg": 8.895933087738472e-05,
+    "maxTargetAngleDeg": 5.0,
+    "exportCollision": "NOT_CONFIGURED",
+    "flags": [],
+    "limitations": [
+      "Prescribed initial velocity; fixed base is an external support.",
+      "Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.",
+      "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+    ]
+  },
+  "ballistic": {
+    "status": "TRACKING_CANDIDATE",
+    "framesIntegrated": 7,
+    "framesRequested": 7,
+    "failure": null,
+    "saturatedJoints": [],
+    "peakActuationComponent": 8.881784197001252e-16,
+    "fixedBase": false,
+    "initialVelocitySource": "kinematic target derivative",
+    "rootActuationAllowed": false,
+    "substeps": 4,
+    "maxKeyErrorMm": 1.0,
+    "keyMaxMm": 1.3608726004012152e-12,
+    "keyRmsMm": 8.320502492893072e-13,
+    "targetRmsMm": 7.395888164993402e-13,
+    "targetMaxMm": 1.3608726004012152e-12,
+    "keyErrors": [
+      {
+        "frame": 1,
+        "maxMm": 0.0
+      },
+      {
+        "frame": 4,
+        "maxMm": 4.742874840267547e-13
+      },
+      {
+        "frame": 7,
+        "maxMm": 1.3608726004012152e-12
+      }
+    ],
+    "targetAngleMaxDeg": 3.260068548500103e-15,
+    "maxTargetAngleDeg": 5.0,
+    "exportCollision": "NOT_CONFIGURED",
+    "flags": [],
+    "limitations": [
+      "Prescribed initial velocity; fixed base is an external support.",
+      "Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.",
+      "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+    ]
+  },
+  "hover": {
+    "status": "REVIEW_REQUIRED",
+    "framesIntegrated": 7,
+    "framesRequested": 7,
+    "failure": null,
+    "saturatedJoints": [],
+    "peakActuationComponent": 8.881784197001252e-16,
+    "fixedBase": false,
+    "initialVelocitySource": "kinematic target derivative",
+    "rootActuationAllowed": false,
+    "substeps": 4,
+    "maxKeyErrorMm": 1.0,
+    "keyMaxMm": 441.4500000000001,
+    "keyRmsMm": 262.71529831502016,
+    "targetRmsMm": 221.0653625768859,
+    "targetMaxMm": 441.4500000000001,
+    "keyErrors": [
+      {
+        "frame": 1,
+        "maxMm": 0.0
+      },
+      {
+        "frame": 4,
+        "maxMm": 110.36249999999993
+      },
+      {
+        "frame": 7,
+        "maxMm": 441.4500000000001
+      }
+    ],
+    "targetAngleMaxDeg": 3.260068548500103e-15,
+    "maxTargetAngleDeg": 5.0,
+    "exportCollision": "NOT_CONFIGURED",
+    "flags": [
+      "KEY_DEVIATION_LIMIT"
+    ],
+    "limitations": [
+      "Prescribed initial velocity; fixed base is an external support.",
+      "Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.",
+      "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+    ]
+  },
+  "limited_actuator": {
+    "status": "REVIEW_REQUIRED",
+    "framesIntegrated": 7,
+    "framesRequested": 7,
+    "failure": null,
+    "saturatedJoints": [
+      "link1"
+    ],
+    "peakActuationComponent": 4.804145445024441,
+    "fixedBase": true,
+    "initialVelocitySource": "kinematic target derivative",
+    "rootActuationAllowed": false,
+    "substeps": 4,
+    "maxKeyErrorMm": 1.0,
+    "keyMaxMm": 806.5721226297685,
+    "keyRmsMm": 286.7087958316288,
+    "targetRmsMm": 257.5139461319212,
+    "targetMaxMm": 806.5721226297685,
+    "keyErrors": [
+      {
+        "frame": 1,
+        "maxMm": 0.0
+      },
+      {
+        "frame": 4,
+        "maxMm": 298.7621352539729
+      },
+      {
+        "frame": 7,
+        "maxMm": 806.5721226297685
+      }
+    ],
+    "targetAngleMaxDeg": 89.22067097435104,
+    "maxTargetAngleDeg": 5.0,
+    "exportCollision": "NOT_CONFIGURED",
+    "flags": [
+      "ACTUATOR_SATURATION",
+      "KEY_DEVIATION_LIMIT",
+      "TARGET_ORIENTATION_DEVIATION"
+    ],
+    "limitations": [
+      "Prescribed initial velocity; fixed base is an external support.",
+      "Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.",
+      "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+    ]
+  }
+}
