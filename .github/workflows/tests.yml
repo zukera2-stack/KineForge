@@ -1,0 +1,19 @@
+name: Synthetic motion tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy scipy
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m unittest discover -s tests -v
+      - run: python examples/generate.py demo_input
+      - run: python solver.py solve demo_input/keys.json demo_input/body.json demo_input/reference.json demo_output --iterations 120
+      - run: python solver.py analyze demo_output/solved.json demo_input/body.json analysis.json
