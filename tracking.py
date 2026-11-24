@@ -46,11 +46,16 @@ class Target:
         if not tr.fixed:v[:3]=self.root(t,1);a[:3]=self.root(t,2)
         return tr.state(self.root(t),L,v),a
 
-def controller(tr,s,target,acc,kp,kd,loads):
+def desired_acceleration(tr,s,target,acc,kp,kd,root=False):
     err=np.zeros(tr.d)
     for i in range(1,tr.n):
         delta=R.from_matrix(tr.N[i].T@target.local[i]@s.local[i].T@tr.N[i]).as_rotvec();err[tr.sl[i]]=tr.B[i].T@delta
-    desired=acc+kp*err+kd*(target.v-s.v);k=tr.kinematics(s);M,h=tr.terms(s,k);passive,_,_=tr.passive(s);bias=h-passive-tr.external(k,loads)
+    if root and not tr.fixed:
+        err[:3]=target.root-s.root;err[3:6]=R.from_matrix(target.local[0]@s.local[0].T).as_rotvec()
+    return acc+kp*err+kd*(target.v-s.v)
+
+def controller(tr,s,target,acc,kp,kd,loads):
+    desired=desired_acceleration(tr,s,target,acc,kp,kd);k=tr.kinematics(s);M,h=tr.terms(s,k);passive,_,_=tr.passive(s);bias=h-passive-tr.external(k,loads)
     # Solve root acceleration from zero applied generalized root wrench. No root servo.
     if not tr.fixed:desired[:6]=np.linalg.solve(M[:6,:6],-bias[:6]-M[:6,6:]@desired[6:])
     tau=M@desired+bias
@@ -63,25 +68,42 @@ def controller(tr,s,target,acc,kp,kd,loads):
 
 def track(body,clip,options):
     if options.get('schema')!='kineforge.tracking.v1':raise ValueError('invalid tracking schema')
-    if options.get('stickingContacts') or clip.get('contactSchedule') or (clip.get('solverHints',{}).get('contactSchedule') or clip.get('solverHints',{}).get('physicalContacts')):raise ValueError('contact tracking not implemented')
+    if options.get('stickingContacts') or clip.get('contactSchedule') or (clip.get('solverHints',{}).get('contactSchedule') or clip.get('solverHints',{}).get('physicalContacts')):raise ValueError('legacy contact tracking not implemented; explicitly convert to supportSchedule')
     fixed=options.get('fixedBase',False);sub=options.get('substeps',4);kp=float(options.get('kp',100));kd=float(options.get('kd',20));tol=float(options.get('maxKeyErrorMm',10));angtol=float(options.get('maxTargetAngleDeg',5))
     if type(fixed)!=bool or type(sub)!=int or not 1<=sub<=64 or not np.isfinite([kp,kd,tol,angtol]).all() or min(kp,kd)<0 or min(tol,angtol)<=0:raise ValueError('invalid tracking options')
     if clip['rig']!=body['rig']:raise ValueError('rig mismatch')
     tr=Tree(body,fixed);ref=Target(tr,clip);loads=options.get('externalLoads',[]);dt=1/ref.fps/sub
     if kp*dt*dt>0.5 or kd*dt>0.5:raise ValueError('tracking gains too high for explicit integration step')
-    s,_=ref.at(0); frames=[];sat=set();peak=0.;failure=None
+    from support import Schedule, allocate
+    schedule=Schedule(tr,ref,options) if 'supportSchedule' in options else None
+    s,_=ref.at(0); frames=[];sat=set();peak=0.;failure=None;gapmax=speedmax=resmax=accresmax=0.;transitions=[];previous=None;methods=set()
+    def evaluate(state,time,active):
+        target,acc=ref.at(time)
+        if active:
+            desired=desired_acceleration(tr,state,target,acc,kp,kd,root=True)
+            return allocate(tr,state,desired,loads,active,schedule,dt)
+        tau,ss=controller(tr,state,target,acc,kp,kd,loads);a,rep=tr.forward(state,tau,loads);return a,tau,ss,rep
     for k in range((ref.F-1)*sub+1):
         time=k*dt
         try:
-            target,acc=ref.at(time);tau,saturated=controller(tr,s,target,acc,kp,kd,loads);sat.update(saturated);peak=max(peak,float(np.max(abs(tau))))
-            a,rep=tr.forward(s,tau,loads)
+            active=schedule.active(k,sub) if schedule is not None else [];ids=[x['id'] for x in active]
+            if ids!=previous:transitions.append({'seconds':time,'active':ids});previous=ids
+            a,tau,saturated,rep=evaluate(s,time,active);sat.update(saturated);peak=max(peak,float(np.max(abs(tau))))
+            gapmax=max(gapmax,rep.get('supportGapMaxM',0.));speedmax=max(speedmax,rep.get('supportSpeedMaxMps',0.));resmax=max(resmax,rep.get('residual',0.));accresmax=max(accresmax,rep.get('contactAccelerationResidualMps2',0.));methods.update([rep['allocationMethod']] if 'allocationMethod' in rep else [])
             if k%sub==0:
                 kin=tr.kinematics(s);frames.append(dict(frame=ref.start+k//sub,positions=kin['P'].tolist(),localQuaternionXYZW=R.from_matrix(s.local).as_quat().tolist(),velocity=s.v.tolist(),actuation=tau.tolist(),**tr.invariants(s),**rep))
             if k==(ref.F-1)*sub:break
-            vm=s.v+.5*dt*a;mid=tr.advance(s,s.v,.5*dt,vm);target,acc=ref.at(time+.5*dt);tm,ss=controller(tr,mid,target,acc,kp,kd,loads);sat.update(ss);peak=max(peak,float(np.max(abs(tm))));am,_=tr.forward(mid,tm,loads);s=tr.advance(s,vm,dt,s.v+dt*am)
+            vm=s.v+.5*dt*a;mid=tr.advance(s,s.v,.5*dt,vm);am,tm,ss,mrep=evaluate(mid,time+.5*dt,active);sat.update(ss);peak=max(peak,float(np.max(abs(tm))));gapmax=max(gapmax,mrep.get('supportGapMaxM',0.));speedmax=max(speedmax,mrep.get('supportSpeedMaxMps',0.));resmax=max(resmax,mrep.get('residual',0.));accresmax=max(accresmax,mrep.get('contactAccelerationResidualMps2',0.));methods.update([mrep['allocationMethod']] if 'allocationMethod' in mrep else []);s=tr.advance(s,vm,dt,s.v+dt*am)
+            # Check outgoing constraints at release; do not mask drift by switching off support.
+            if active:
+                kin=tr.kinematics(s)
+                for item in active:
+                    pos,J,_=tr.point(kin,item['bone'],item['local']);gap=float(np.linalg.norm(pos-item['anchor']));speed=float(np.linalg.norm(J@s.v));gapmax=max(gapmax,gap);speedmax=max(speedmax,speed)
+                    if gap>schedule.gap or speed>schedule.speed:raise ValueError('outgoing support drift: '+item['id'])
         except (ValueError,np.linalg.LinAlgError) as ex:
             failure={'seconds':time,'reason':str(ex)};break
     flags=[];report={'status':'REVIEW_REQUIRED','framesIntegrated':len(frames),'framesRequested':ref.F,'failure':failure,'saturatedJoints':sorted(sat),'peakActuationComponent':peak,'fixedBase':fixed,'initialVelocitySource':'kinematic target derivative','rootActuationAllowed':False,'substeps':sub,'maxKeyErrorMm':tol}
+    if schedule is not None:report['support']={'transitions':transitions,'gapMaxM':gapmax,'speedMaxMps':speedmax,'equationResidualMax':resmax,'contactAccelerationResidualMaxMps2':accresmax,'allocationMethods':sorted(methods),'schedule':copy.deepcopy(options['supportSchedule']),'gapToleranceM':schedule.gap,'speedToleranceMps':schedule.speed}
     if failure:flags.append('INTEGRATION_FAILED')
     if sat:flags.append('ACTUATOR_SATURATION')
     out=None
@@ -102,10 +124,10 @@ def track(body,clip,options):
             flags.extend(report['exportCollision']['flags'])
             if flags:report['status']='REVIEW_REQUIRED'
         else:report['exportCollision']='NOT_CONFIGURED'
-        out=copy.deepcopy(clip);out['keyframes']=[{'frame':f['frame'],'positions':f['positions']} for f in frames];out['localQuaternionXYZW']=[f['localQuaternionXYZW'] for f in frames];out['sourceKeys']=[{**x,'positions':out['keyframes'][i]['positions']} for x,i in zip(ref.keys,ref.ids)];out['solver']={'name':'KineForge 0.7 beta tracking','diagnostics':report};out['notes']='Physical replay candidate, not game acceptance. Original author keys and timing preserved.'
+        out=copy.deepcopy(clip);out['keyframes']=[{'frame':f['frame'],'positions':f['positions']} for f in frames];out['localQuaternionXYZW']=[f['localQuaternionXYZW'] for f in frames];out['sourceKeys']=[{**x,'positions':out['keyframes'][i]['positions']} for x,i in zip(ref.keys,ref.ids)];out['solver']={'name':'KineForge 0.7 gamma tracking','diagnostics':report};out['notes']='Physical replay candidate, not game acceptance. Original author keys and timing preserved.'
     if out is not None:
         q=np.array(out['localQuaternionXYZW']);
         for i in range(1,len(q)):q[i]*=np.where(np.sum(q[i]*q[i-1],axis=-1)<0,-1,1)[:,None]
         out['localQuaternionXYZW']=q.tolist()
-    report['flags']=flags;report['limitations']=['Prescribed initial velocity; fixed base is an external support.','Feedback tracking, not optimal control. No contact schedule, collision response or automatic contact discovery.','Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance.']
+    report['flags']=flags;report['limitations']=['Prescribed initial velocity; fixed base is an external support.','Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.','Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance.']
     return dict(schema='kineforge.tracking.result.v1',report=report,dof=tr.dof,frames=frames,solved=out)

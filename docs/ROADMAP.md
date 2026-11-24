@@ -12,4 +12,6 @@
 
 0.7 beta — experimental inverse-dynamics PD trajectory replay with zero floating-base actuation and sampled key/angle gates. Contact-aware tracking, target generation compatible with joint models and optimal control remain open.
 
+0.7 gamma — scheduled sticking contact tracking and coupled reaction/actuator allocation at each sample, with explicit release and zero-speed activation. Partial: automatic contact scheduling, impact/sliding, horizon-wide control optimization and character acceptance remain open.
+
 0.8 — stable engine-independent API, packaging and integration adapters. Keep editors and proprietary data separate. No claim of production readiness until validated.

@@ -1,0 +1,1346 @@
+{
+  "static": {
+    "report": {
+      "status": "TRACKING_CANDIDATE",
+      "framesIntegrated": 7,
+      "framesRequested": 7,
+      "failure": null,
+      "saturatedJoints": [],
+      "peakActuationComponent": 0.0,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": [
+              "floor"
+            ]
+          }
+        ],
+        "gapMaxM": 9.696592178955702e-18,
+        "speedMaxMps": 8.163159687020607e-17,
+        "equationResidualMax": 3.619057435966469e-15,
+        "contactAccelerationResidualMaxMps2": 2.8646611211001242e-15,
+        "allocationMethods": [
+          "SLSQP"
+        ],
+        "schedule": [
+          {
+            "id": "floor",
+            "bone": "root",
+            "localPointM": [
+              0,
+              0,
+              0
+            ],
+            "anchorM": [
+              0,
+              0,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "keyMaxMm": 9.696592178955702e-15,
+      "keyRmsMm": 5.781116181292315e-15,
+      "targetRmsMm": 4.919978462600784e-15,
+      "targetMaxMm": 9.696592178955702e-15,
+      "keyErrors": [
+        {
+          "frame": 1,
+          "maxMm": 0.0
+        },
+        {
+          "frame": 4,
+          "maxMm": 2.4980018054066026e-15
+        },
+        {
+          "frame": 7,
+          "maxMm": 9.696592178955702e-15
+        }
+      ],
+      "targetAngleMaxDeg": 0.0,
+      "maxTargetAngleDeg": 5.0,
+      "exportCollision": "NOT_CONFIGURED",
+      "flags": [],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "firstFrame": {
+      "frame": 1,
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": 0.0,
+      "comM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 3.593112405848755e-15,
+      "contactAccelerationResidualMps2": 2.220446049250313e-16,
+      "contactForcesN": [
+        {
+          "id": "floor",
+          "forceN": [
+            -5.445643935786393e-16,
+            -5.278134281948017e-16,
+            19.619999999999997
+          ],
+          "normalN": 19.619999999999997,
+          "tangentN": 7.583781337409592e-16
+        }
+      ],
+      "massCondition": 25.0,
+      "supportGapMaxM": 0.0,
+      "supportSpeedMaxMps": 0.0,
+      "desiredAccelerationError": 2.220446049250313e-16,
+      "allocationIterations": 1,
+      "allocationMethod": "SLSQP"
+    },
+    "lastFrame": {
+      "frame": 7,
+      "positions": [
+        [
+          -9.575673587391978e-18,
+          0.0,
+          -1.5265566588595906e-18
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        -5.273559366969494e-17,
+        2.7755575615628915e-18,
+        -4.440892098500627e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": -2.9951041646825165e-17,
+      "comM": [
+        -9.575673587391978e-18,
+        0.0,
+        -1.5265566588595906e-18
+      ],
+      "linearMomentumKgMps": [
+        -1.0547118733938988e-16,
+        5.551115123125783e-18,
+        -8.881784197001254e-17
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 3.619057435966469e-15,
+      "contactAccelerationResidualMps2": 2.8646611211001242e-15,
+      "contactForcesN": [
+        {
+          "id": "floor",
+          "forceN": [
+            0.0,
+            -5.278134281948018e-16,
+            19.62
+          ],
+          "normalN": 19.62,
+          "tangentN": 5.278134281948018e-16
+        }
+      ],
+      "massCondition": 25.0,
+      "supportGapMaxM": 9.696592178955702e-18,
+      "supportSpeedMaxMps": 6.899926682599785e-17,
+      "desiredAccelerationError": 3.3383508228152384e-15,
+      "allocationIterations": 1,
+      "allocationMethod": "SLSQP"
+    }
+  },
+  "release": {
+    "report": {
+      "status": "REVIEW_REQUIRED",
+      "framesIntegrated": 7,
+      "framesRequested": 7,
+      "failure": null,
+      "saturatedJoints": [],
+      "peakActuationComponent": 0.0,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": [
+              "floor"
+            ]
+          },
+          {
+            "seconds": 0.15000000000000002,
+            "active": []
+          }
+        ],
+        "gapMaxM": 2.4980018054066025e-18,
+        "speedMaxMps": 3.3306690738754695e-17,
+        "equationResidualMax": 3.593112405848755e-15,
+        "contactAccelerationResidualMaxMps2": 8.79296635503124e-16,
+        "allocationMethods": [
+          "SLSQP"
+        ],
+        "schedule": [
+          {
+            "id": "floor",
+            "bone": "root",
+            "localPointM": [
+              0,
+              0,
+              0
+            ],
+            "anchorM": [
+              0,
+              0,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 4,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "keyMaxMm": 110.3625,
+      "keyRmsMm": 63.71781908344007,
+      "targetRmsMm": 45.882073705315456,
+      "targetMaxMm": 110.3625,
+      "keyErrors": [
+        {
+          "frame": 1,
+          "maxMm": 0.0
+        },
+        {
+          "frame": 4,
+          "maxMm": 2.4980018054066026e-15
+        },
+        {
+          "frame": 7,
+          "maxMm": 110.3625
+        }
+      ],
+      "targetAngleMaxDeg": 0.0,
+      "maxTargetAngleDeg": 5.0,
+      "exportCollision": "NOT_CONFIGURED",
+      "flags": [
+        "KEY_DEVIATION_LIMIT"
+      ],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "firstFrame": {
+      "frame": 1,
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": 0.0,
+      "comM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 3.593112405848755e-15,
+      "contactAccelerationResidualMps2": 2.220446049250313e-16,
+      "contactForcesN": [
+        {
+          "id": "floor",
+          "forceN": [
+            -5.445643935786393e-16,
+            -5.278134281948017e-16,
+            19.619999999999997
+          ],
+          "normalN": 19.619999999999997,
+          "tangentN": 7.583781337409592e-16
+        }
+      ],
+      "massCondition": 25.0,
+      "supportGapMaxM": 0.0,
+      "supportSpeedMaxMps": 0.0,
+      "desiredAccelerationError": 2.220446049250313e-16,
+      "allocationIterations": 1,
+      "allocationMethod": "SLSQP"
+    },
+    "lastFrame": {
+      "frame": 7,
+      "positions": [
+        [
+          -7.49400541621981e-18,
+          0.0,
+          -0.1103625
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        -3.3306690738754695e-17,
+        0.0,
+        -1.4715,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": 0.0,
+      "comM": [
+        -7.49400541621981e-18,
+        0.0,
+        -0.1103625
+      ],
+      "linearMomentumKgMps": [
+        -6.661338147750939e-17,
+        0.0,
+        -2.943
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 0.0,
+      "contactForcesN": [],
+      "massCondition": 25.0
+    }
+  },
+  "switch": {
+    "report": {
+      "status": "TRACKING_CANDIDATE",
+      "framesIntegrated": 7,
+      "framesRequested": 7,
+      "failure": null,
+      "saturatedJoints": [],
+      "peakActuationComponent": 0.0,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": [
+              "a"
+            ]
+          },
+          {
+            "seconds": 0.15000000000000002,
+            "active": [
+              "b"
+            ]
+          }
+        ],
+        "gapMaxM": 9.696592178955702e-18,
+        "speedMaxMps": 8.163159687020607e-17,
+        "equationResidualMax": 3.619057435966469e-15,
+        "contactAccelerationResidualMaxMps2": 2.8646611211001242e-15,
+        "allocationMethods": [
+          "SLSQP"
+        ],
+        "schedule": [
+          {
+            "id": "a",
+            "bone": "root",
+            "localPointM": [
+              0,
+              0,
+              0
+            ],
+            "anchorM": [
+              0,
+              0,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 4,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "id": "b",
+            "bone": "root",
+            "localPointM": [
+              0,
+              0,
+              0
+            ],
+            "anchorM": [
+              0,
+              0,
+              0
+            ],
+            "startFrame": 4,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "keyMaxMm": 9.696592178955702e-15,
+      "keyRmsMm": 5.781116181292315e-15,
+      "targetRmsMm": 4.919978462600784e-15,
+      "targetMaxMm": 9.696592178955702e-15,
+      "keyErrors": [
+        {
+          "frame": 1,
+          "maxMm": 0.0
+        },
+        {
+          "frame": 4,
+          "maxMm": 2.4980018054066026e-15
+        },
+        {
+          "frame": 7,
+          "maxMm": 9.696592178955702e-15
+        }
+      ],
+      "targetAngleMaxDeg": 0.0,
+      "maxTargetAngleDeg": 5.0,
+      "exportCollision": "NOT_CONFIGURED",
+      "flags": [],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "firstFrame": {
+      "frame": 1,
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": 0.0,
+      "comM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 3.593112405848755e-15,
+      "contactAccelerationResidualMps2": 2.220446049250313e-16,
+      "contactForcesN": [
+        {
+          "id": "a",
+          "forceN": [
+            -5.445643935786393e-16,
+            -5.278134281948017e-16,
+            19.619999999999997
+          ],
+          "normalN": 19.619999999999997,
+          "tangentN": 7.583781337409592e-16
+        }
+      ],
+      "massCondition": 25.0,
+      "supportGapMaxM": 0.0,
+      "supportSpeedMaxMps": 0.0,
+      "desiredAccelerationError": 2.220446049250313e-16,
+      "allocationIterations": 1,
+      "allocationMethod": "SLSQP"
+    },
+    "lastFrame": {
+      "frame": 7,
+      "positions": [
+        [
+          -9.575673587391978e-18,
+          0.0,
+          -1.5265566588595906e-18
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        -5.273559366969494e-17,
+        2.7755575615628915e-18,
+        -4.440892098500627e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": -2.9951041646825165e-17,
+      "comM": [
+        -9.575673587391978e-18,
+        0.0,
+        -1.5265566588595906e-18
+      ],
+      "linearMomentumKgMps": [
+        -1.0547118733938988e-16,
+        5.551115123125783e-18,
+        -8.881784197001254e-17
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 3.619057435966469e-15,
+      "contactAccelerationResidualMps2": 2.8646611211001242e-15,
+      "contactForcesN": [
+        {
+          "id": "b",
+          "forceN": [
+            0.0,
+            -5.278134281948018e-16,
+            19.62
+          ],
+          "normalN": 19.62,
+          "tangentN": 5.278134281948018e-16
+        }
+      ],
+      "massCondition": 25.0,
+      "supportGapMaxM": 9.696592178955702e-18,
+      "supportSpeedMaxMps": 6.899926682599785e-17,
+      "desiredAccelerationError": 3.3383508228152384e-15,
+      "allocationIterations": 1,
+      "allocationMethod": "SLSQP"
+    }
+  },
+  "insufficient_friction": {
+    "report": {
+      "status": "REVIEW_REQUIRED",
+      "framesIntegrated": 0,
+      "framesRequested": 7,
+      "failure": {
+        "seconds": 0.0,
+        "reason": "support allocation infeasible: The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+      },
+      "saturatedJoints": [],
+      "peakActuationComponent": 0.0,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": [
+              "floor"
+            ]
+          }
+        ],
+        "gapMaxM": 0.0,
+        "speedMaxMps": 0.0,
+        "equationResidualMax": 0.0,
+        "contactAccelerationResidualMaxMps2": 0.0,
+        "allocationMethods": [],
+        "schedule": [
+          {
+            "id": "floor",
+            "bone": "root",
+            "localPointM": [
+              0,
+              0,
+              0
+            ],
+            "anchorM": [
+              0,
+              0,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 8,
+            "mu": 0.2,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "flags": [
+        "INTEGRATION_FAILED"
+      ],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "firstFrame": null,
+    "lastFrame": null
+  },
+  "impact_rejected": {
+    "report": {
+      "status": "REVIEW_REQUIRED",
+      "framesIntegrated": 3,
+      "framesRequested": 7,
+      "failure": {
+        "seconds": 0.15000000000000002,
+        "reason": "support drift or nonzero activation velocity: floor"
+      },
+      "saturatedJoints": [],
+      "peakActuationComponent": 0.0,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": []
+          },
+          {
+            "seconds": 0.15000000000000002,
+            "active": [
+              "floor"
+            ]
+          }
+        ],
+        "gapMaxM": 0.0,
+        "speedMaxMps": 0.0,
+        "equationResidualMax": 0.0,
+        "contactAccelerationResidualMaxMps2": 0.0,
+        "allocationMethods": [],
+        "schedule": [
+          {
+            "id": "floor",
+            "bone": "root",
+            "localPointM": [
+              0,
+              0,
+              0
+            ],
+            "anchorM": [
+              0,
+              0,
+              0
+            ],
+            "startFrame": 4,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "flags": [
+        "INTEGRATION_FAILED"
+      ],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "firstFrame": {
+      "frame": 1,
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.1103625
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        -8.326672684688674e-16,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": 2.16531225,
+      "comM": [
+        0.0,
+        0.0,
+        0.1103625
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        -1.6653345369377348e-15
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 0.0,
+      "contactForcesN": [],
+      "massCondition": 25.0
+    },
+    "lastFrame": {
+      "frame": 3,
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.061312499999999916
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        -0.9810000000000008,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "energyJ": 2.16531225,
+      "comM": [
+        0.0,
+        0.0,
+        0.061312499999999916
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        -1.9620000000000015
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual": 0.0,
+      "contactForcesN": [],
+      "massCondition": 25.0
+    }
+  },
+  "moving_articulated": {
+    "report": {
+      "status": "TRACKING_CANDIDATE",
+      "framesIntegrated": 7,
+      "framesRequested": 7,
+      "failure": null,
+      "saturatedJoints": [],
+      "peakActuationComponent": 18.20138609588553,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
+          }
+        ],
+        "gapMaxM": 7.159383465069264e-16,
+        "speedMaxMps": 9.947040527002946e-15,
+        "equationResidualMax": 3.8164748239819783e-13,
+        "contactAccelerationResidualMaxMps2": 9.778727367653363e-13,
+        "allocationMethods": [
+          "SLSQP"
+        ],
+        "schedule": [
+          {
+            "id": "0",
+            "bone": "root",
+            "localPointM": [
+              -1,
+              -1,
+              0
+            ],
+            "anchorM": [
+              -1,
+              -1,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "id": "1",
+            "bone": "root",
+            "localPointM": [
+              2,
+              -1,
+              0
+            ],
+            "anchorM": [
+              2,
+              -1,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "id": "2",
+            "bone": "root",
+            "localPointM": [
+              2,
+              1,
+              0
+            ],
+            "anchorM": [
+              2,
+              1,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "id": "3",
+            "bone": "root",
+            "localPointM": [
+              -1,
+              1,
+              0
+            ],
+            "anchorM": [
+              -1,
+              1,
+              0
+            ],
+            "startFrame": 1,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "keyMaxMm": 0.006142941566890678,
+      "keyRmsMm": 0.002317897336105745,
+      "targetRmsMm": 0.0021991457129122635,
+      "targetMaxMm": 0.006142941566890678,
+      "keyErrors": [
+        {
+          "frame": 1,
+          "maxMm": 0.0
+        },
+        {
+          "frame": 4,
+          "maxMm": 0.0032585428418699185
+        },
+        {
+          "frame": 7,
+          "maxMm": 0.006142941566890678
+        }
+      ],
+      "targetAngleMaxDeg": 0.00035196462556662115,
+      "maxTargetAngleDeg": 5.0,
+      "exportCollision": "NOT_CONFIGURED",
+      "flags": [],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "firstFrame": {
+      "frame": 1,
+      "positions": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.3000000000000001,
+        0.3000000000000001
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -18.199999989702867,
+        -4.424999996667318
+      ],
+      "energyJ": 0.21375000000000013,
+      "comM": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        -0.7500000000000002
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.6900000000000003,
+        0.0
+      ],
+      "residual": 2.2787570370140794e-13,
+      "contactAccelerationResidualMps2": 2.952637781762466e-13,
+      "contactForcesN": [
+        {
+          "id": "0",
+          "forceN": [
+            -0.1574999998764223,
+            -1.345074052139239e-13,
+            9.870833332308644
+          ],
+          "normalN": 9.870833332308644,
+          "tangentN": 0.1574999998764223
+        },
+        {
+          "id": "1",
+          "forceN": [
+            -1.2386280501264225e-10,
+            2.643860130824294e-13,
+            9.249166663949094
+          ],
+          "normalN": 9.249166663949094,
+          "tangentN": 1.2386308717920667e-10
+        },
+        {
+          "id": "2",
+          "forceN": [
+            -0.15749999987682023,
+            -7.276741709194568e-14,
+            9.564166663457017
+          ],
+          "normalN": 9.564166663457017,
+          "tangentN": 0.15749999987682023
+        },
+        {
+          "id": "3",
+          "forceN": [
+            -1.229030102689599e-10,
+            -5.547749759582388e-14,
+            9.5558333328007
+          ],
+          "normalN": 9.5558333328007,
+          "tangentN": 1.2290302279002253e-10
+        }
+      ],
+      "massCondition": 177.18849987096715,
+      "supportGapMaxM": 0.0,
+      "supportSpeedMaxMps": 0.0,
+      "desiredAccelerationError": 3.637853720179938e-09,
+      "allocationIterations": 4,
+      "allocationMethod": "SLSQP"
+    },
+    "lastFrame": {
+      "frame": 7,
+      "positions": [
+        [
+          -5.757113535898054e-19,
+          3.199954643590567e-17,
+          2.1510571102112436e-17
+        ],
+        [
+          -5.757113535898054e-19,
+          3.199954643590567e-17,
+          2.1510571102112436e-17
+        ],
+        [
+          0.9941730043329908,
+          1.479284921693608e-17,
+          -0.10779627755871435
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          -9.450501558624807e-17,
+          1.3473643479170571e-16,
+          1.5932239906309994e-18,
+          1.0
+        ],
+        [
+          0.0,
+          0.053976826819522,
+          0.0,
+          0.9985421884760279
+        ],
+        [
+          0.0,
+          0.05397682681010482,
+          0.0,
+          0.998542188476537
+        ]
+      ],
+      "velocity": [
+        -2.27248775352962e-17,
+        1.6791324354232116e-16,
+        -5.773159728050813e-16,
+        -1.3765226739081321e-15,
+        -1.3324878630931268e-15,
+        2.9818843935746713e-16,
+        0.4200177195664411,
+        0.42001771953175593
+      ],
+      "actuation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -18.03571504488128,
+        -4.3038239939016885
+      ],
+      "energyJ": -2.219584384523941,
+      "comM": [
+        0.4949098672614981,
+        2.0872120514363436e-17,
+        -0.0672156413613299
+      ],
+      "linearMomentumKgMps": [
+        -0.1579395632095915,
+        6.954298479300036e-16,
+        -1.0366118934862054
+      ],
+      "angularMomentumCOMKgM2ps": [
+        -3.1252185642149724e-16,
+        0.9637462786403831,
+        4.277311414858115e-17
+      ],
+      "residual": 1.2904480758608631e-14,
+      "contactAccelerationResidualMps2": 3.780524321637795e-13,
+      "contactForcesN": [
+        {
+          "id": "0",
+          "forceN": [
+            0.1880181894914706,
+            -1.5261417130041366e-13,
+            10.535407224537567
+          ],
+          "normalN": 10.535407224537567,
+          "tangentN": 0.1880181894914706
+        },
+        {
+          "id": "1",
+          "forceN": [
+            -0.5668973818968619,
+            1.576513919410161e-13,
+            8.644259016405973
+          ],
+          "normalN": 8.644259016405973,
+          "tangentN": 0.5668973818968619
+        },
+        {
+          "id": "2",
+          "forceN": [
+            0.1880181894914303,
+            -4.97255361886495e-13,
+            10.154090159183482
+          ],
+          "normalN": 10.154090159183482,
+          "tangentN": 0.1880181894914303
+        },
+        {
+          "id": "3",
+          "forceN": [
+            -0.5668973818978511,
+            4.882019788432502e-13,
+            9.025576081760056
+          ],
+          "normalN": 9.025576081760056,
+          "tangentN": 0.5668973818978511
+        }
+      ],
+      "massCondition": 176.4766794202757,
+      "supportGapMaxM": 7.064451992372066e-16,
+      "supportSpeedMaxMps": 3.558170801747969e-15,
+      "desiredAccelerationError": 3.601993575589389e-09,
+      "allocationIterations": 4,
+      "allocationMethod": "SLSQP"
+    }
+  }
+}
