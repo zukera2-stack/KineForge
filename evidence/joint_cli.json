@@ -1,0 +1,5 @@
+{
+  "solve_analyze_joint_report_equal": true,
+  "status": "KINEMATIC_CANDIDATE",
+  "joint_status": "SAMPLED_JOINT_CONSTRAINTS_PASS"
+}

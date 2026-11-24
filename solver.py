@@ -6,9 +6,10 @@ import numpy as np
 from scipy.interpolate import CubicSpline
 from scipy.spatial.transform import Rotation as R, Slerp
 import torch
-VERSION='0.4.0'
+VERSION='0.5.0'
 import dynamics
 import contact as contact_model
+import joints as joint_model
 C=np.array([[1,0,0],[0,0,-1],[0,1,0]],float) # legacy coordinate conversion
 
 def read(p): return json.loads(Path(p).read_text(encoding='utf8'))
@@ -72,6 +73,7 @@ def solve(d,b,ref,iterations=120,strength=.6,max_key_mm=100,initial=None,max_ste
     need(type(iterations)==int and iterations>0 and np.isfinite(strength) and strength>=0 and np.isfinite(max_key_mm) and max_key_mm>0 and (max_step_deg is None or np.isfinite(max_step_deg) and max_step_deg>0), 'invalid optimizer settings');p,F,fps,ids,Y=valid(d,b);n=len(p);names=d['rig']['bones'];o=np.array(b['offsets_m']);need(o.shape==(n,3) and np.isfinite(o).all() and (np.linalg.norm(o[1:],axis=-1)>1e-9).all(),'bad offsets');need(np.isfinite(ref).all() and ref.shape==(F,n,3,3),'bad reference rotations');t=np.arange(F)/fps;root=CubicSpline(t[ids],Y[:,0],bc_type='natural')(t)
     physical=dynamics.tensors(b['physical'],n) if 'physical' in b else None
     contact_schedule=contact_model.prepare(d,physical)
+    joint_models=joint_model.prepare(b)
     # A wholly unsupported clip has a ballistic translation seed. Interpolate
     # the gravity-compensated coordinates, then restore the known acceleration.
     if contact_schedule is not None and not contact_schedule['items']:
@@ -118,8 +120,8 @@ def solve(d,b,ref,iterations=120,strength=.6,max_key_mm=100,initial=None,max_ste
         err=(P[ids]-target).square().sum(-1);step_rel=L[1:]@L[:-1].transpose(-1,-2);step_cos=(step_rel.diagonal(dim1=-2,dim2=-1).sum(-1)-1)/2
         peak_key=torch.relu(torch.sqrt(err+1e-18)-budget*.85).square().sum()/len(ids)
         peak_rot=torch.relu(torch.sqrt(torch.clamp(2*(1-step_cos),min=1e-18))-torch.sqrt(2*(1-capcos))).square().sum()/max(1,F-1)
-        return {'keys':(err*w).mean(),'key_budget':peak_key,'rotation_budget':peak_rot,'linear':2*mean(acc)+5*mean(diff(P,3))+.4*bend,'angular':1.2*mean(diff(L,2))+3*mean(diff(L,3))+.035*mean(diff(L,1)),'prior':.0003*mean(L-prior),'observed_envelope':.02*env,'inertia_proxy':(physical_weight if physical is not None else .15)*(inertia_proxy+angular_proxy),'contacts':2*contact,'contact_wrench':contact_model.evaluate(G,P,physical,p,fps,contact_schedule) if contact_schedule is not None else P.sum()*0,'collision':2*collision,'root':.025*mean(dr)}
-    def total(q):return 4*q['keys']+40*q['key_budget']+8*q['rotation_budget']+strength*(q['linear']+q['angular'])+sum(q[k] for k in ['prior','observed_envelope','inertia_proxy','contacts','contact_wrench','collision','root'])
+        return {'keys':(err*w).mean(),'key_budget':peak_key,'rotation_budget':peak_rot,'linear':2*mean(acc)+5*mean(diff(P,3))+.4*bend,'angular':1.2*mean(diff(L,2))+3*mean(diff(L,3))+.035*mean(diff(L,1)),'prior':.0003*mean(L-prior),'observed_envelope':.02*env,'inertia_proxy':(physical_weight if physical is not None else .15)*(inertia_proxy+angular_proxy),'contacts':2*contact,'contact_wrench':contact_model.evaluate(G,P,physical,p,fps,contact_schedule) if contact_schedule is not None else P.sum()*0,'collision':2*collision,'joints':joint_model.cost(L,G,P,neutral,joint_models,physical,p,fps,contact_schedule) if joint_models else P.sum()*0,'root':.025*mean(dr)}
+    def total(q):return 4*q['keys']+40*q['key_budget']+8*q['rotation_budget']+strength*(q['linear']+q['angular'])+sum(q[k] for k in ['prior','observed_envelope','inertia_proxy','contacts','contact_wrench','collision','joints','root'])
     def closure():opt.zero_grad();q=terms(*state());loss=total(q);loss.backward();return loss
     with torch.no_grad():before=float(total(terms(*state())))
     opt.step(closure)
@@ -142,6 +144,8 @@ def solve(d,b,ref,iterations=120,strength=.6,max_key_mm=100,initial=None,max_ste
             if contact_schedule is None and not physical_baseline['near_pi_warning'] and phys['segment_com_torque_rms_Nm']>physical_baseline['segment_com_torque_rms_Nm']*1.05+1e-6:flags.append('SEGMENT_TORQUE_REGRESSION')
         if contact_schedule is not None and P is not None:
             flags.extend(contact_model.report(fk(L,P[:,0],o,p)[0],P,physical,p,fps,contact_schedule)['flags'])
+        if joint_models and P is not None:
+            flags.extend(joint_model.report(L,fk(L,P[:,0],o,p)[0],P,neutral,joint_models,physical,p,fps,contact_schedule,d['timeline']['start'])['flags'])
         return flags
     physical_baseline=dynamics.report(fk(L0,root,o,p)[0],P0,b['physical'],p,fps) if physical is not None else None
     attempt_flags=violations(m,L,P);initial_flags=violations(initial_metrics,L0,P0)
@@ -155,7 +159,7 @@ def solve(d,b,ref,iterations=120,strength=.6,max_key_mm=100,initial=None,max_ste
             Pi=fk(Li,root+fraction*(P[:,0]-root),o,p)[1];mi=metrics(Pi,Li,fps,ids,Y,names,o,p);candidates.append((fraction,Li,Pi,mi,violations(mi,Li,Pi)))
     def rank(c):
         _,_,_,m,flags=c
-        hard=sum(f in ('KEY_DEVIATION_LIMIT','BOUNDARY_NOT_EXACT','CONTACT_WRENCH_RESIDUAL','CONTACT_ANCHOR_DRIFT') for f in flags) if contact_schedule is not None else 0
+        hard=sum(f in ('KEY_DEVIATION_LIMIT','BOUNDARY_NOT_EXACT','CONTACT_WRENCH_RESIDUAL','CONTACT_ANCHOR_DRIFT','JOINT_RANGE_OR_AXIS_LIMIT','JOINT_ROTATION_AMBIGUOUS','ACTUATOR_LIMIT','ACTUATOR_LOAD_UNVERIFIED') for f in flags) if contact_schedule is not None or joint_models else 0
         return (hard,len(flags), m['rms_jerk_mps3']/max(initial_metrics['rms_jerk_mps3'],1e-6)+m['rms_angular_jerk_deg_s3']/max(initial_metrics['rms_angular_jerk_deg_s3'],1e-6)+.15*m['key_max_mm']/max_key_mm)
     fraction,L,P,m,selected_flags=min(candidates,key=rank);rejected=fraction==0.
     need(m['length_max_error_m']<1e-8,'FK length failure')
@@ -173,6 +177,9 @@ def solve(d,b,ref,iterations=120,strength=.6,max_key_mm=100,initial=None,max_ste
         if contact_schedule is not None:
             report['contact_initial']=contact_model.report(fk(L0,root,o,p)[0],P0,physical,p,fps,contact_schedule)
             report['contact_final']=contact_model.report(fk(L,P[:,0],o,p)[0],P,physical,p,fps,contact_schedule)
+    if joint_models:
+        report['joint_initial']=joint_model.report(L0,fk(L0,root,o,p)[0],P0,neutral,joint_models,physical,p,fps,contact_schedule,d['timeline']['start'])
+        report['joint_final']=joint_model.report(L,fk(L,P[:,0],o,p)[0],P,neutral,joint_models,physical,p,fps,contact_schedule,d['timeline']['start'])
     out=copy.deepcopy(d);out['schema']='sam.skeletal.solved.v1';out['originalAuthorKeys']=out.pop('keys');out['keyframes']=[{'frame':i+d['timeline']['start'],'positions':a.tolist()} for i,a in enumerate(P)];out['sourceKeys']=[{**k,'positions':out['keyframes'][i]['positions']} for k,i in zip(d['keys'],ids)];out['lockedFrames']=[k['frame'] for k in d['keys']];out['localQuaternionXYZW']=ql.tolist();out['solver']={'name':'KineForge '+VERSION,'diagnostics':report};out['notes']='Original author keys retained separately. Editor sourceKeys represent solved positions. REVIEW_REQUIRED is not acceptance.';return out,report,P,L,ids,Y
 
 def diagnostics(path,P,L,fps,names,start,ids,b):
@@ -199,6 +206,9 @@ def main():
             G,expected=fk(L,P[:,0],o,p);need(np.max(np.abs(expected-P))<1e-6,'inconsistent solved coordinates and rotations');r['physical']=dynamics.report(G,P,b['physical'],p,fps)
             params=dynamics.tensors(b['physical'],len(p));schedule=contact_model.prepare(d,params)
             if schedule is not None:r['contact']=contact_model.report(G,P,params,p,fps,schedule)
+        jm=joint_model.prepare(b)
+        if jm:
+            G,expected=fk(L,P[:,0],o,p);need(np.max(np.abs(expected-P))<1e-6,'inconsistent solved coordinates and rotations');params=dynamics.tensors(b['physical'],len(p)) if 'physical' in b else None; schedule=contact_model.prepare(d,params);r['joints']=joint_model.report(L,G,P,R.from_quat(b['neutralLocalQuaternionXYZW']).as_matrix(),jm,params,p,fps,schedule,d['timeline']['start'])
         return r
     if args.mode=='analyze':write(args.output,analyze(args.solved));return
     if args.mode=='compare':write(args.output,{'first':analyze(args.first),'second':analyze(args.second),'note':'Each key error is relative to its own author keys.'});return
