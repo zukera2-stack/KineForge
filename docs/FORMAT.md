@@ -18,3 +18,7 @@ Optional body `collisionModel`: explicit bone-local sphere pairs and adaptive in
 Optional explicit forward simulation input and output: [COUPLED.md](COUPLED.md). Separate scenario schema; no change to authored pose JSON.
 
 Optional coupled tracking options and scheduled sticking supports: [TRACKING.md](TRACKING.md), [SUPPORT.md](SUPPORT.md). Author key schema unchanged.
+
+## Contact impulse experiment (0.7 delta)
+
+The `simulate` command also accepts `kineforge.contact_simulation.v1` for one explicit point/static plane. See [IMPACT.md](IMPACT.md) for schema, event outputs and limits. This is separate from scheduled sticking tracking.

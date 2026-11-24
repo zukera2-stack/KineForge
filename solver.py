@@ -6,7 +6,7 @@ import numpy as np
 from scipy.interpolate import CubicSpline
 from scipy.spatial.transform import Rotation as R, Slerp
 import torch
-VERSION='0.7.0-gamma'
+VERSION='0.7.0-delta'
 import dynamics
 import contact as contact_model
 import joints as joint_model
@@ -212,7 +212,11 @@ def main():
         write(args.output,track(b,read(args.target),read(args.options)));return
     if args.mode=='simulate':
         from coupled import simulate
-        write(args.output,simulate(b,read(args.scenario)));return
+        scenario=read(args.scenario)
+        if scenario.get('schema')=='kineforge.contact_simulation.v1':
+            from impact import simulate_contact
+            write(args.output,simulate_contact(b,scenario));return
+        write(args.output,simulate(b,scenario));return
     def analyze(path):
         d=read(path);need(d['rig']==b['rig'],'rig mismatch');p=rig_check(d['rig']);P=np.array([k['positions'] for k in d['keyframes']]);L=R.from_quat(np.array(d['localQuaternionXYZW']).reshape(-1,4)).as_matrix().reshape(len(P),len(p),3,3);keys=d['originalAuthorKeys'];ids=np.array([k['frame']-d['timeline']['start'] for k in keys]);Y=np.array([k['positions'] for k in keys]);fps=d['timeline']['fps'];o=np.array(b['offsets_m']);r=metrics(P,L,fps,ids,Y,d['rig']['bones'],o,p)
         if 'physical' in b:
