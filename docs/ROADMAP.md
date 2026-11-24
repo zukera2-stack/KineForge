@@ -2,7 +2,7 @@
 
 0.3 — experimental baseline: unified optimization and sampled inverse dynamics. Public synthetic tests are the reproducible baseline; private dataset evaluations are not public fixtures.
 
-0.4 — contact feasibility: solve external force/moment balance with unilateral normal forces and friction constraints; verify static equilibrium, ballistic motion, impossible contacts and force residuals. Integrate as a differentiable or constrained term without changing key timing silently.
+0.4 — implemented experimental sampled contact feasibility: solve external force/moment balance with unilateral normal forces and friction constraints; verify static equilibrium, ballistic motion, impossible contacts and force residuals. Integrate as a differentiable or constrained term without changing key timing silently.
 
 0.5 — joint models: configurable hinge/ball/other DOFs, anatomical axes, explicit limits, spring-damper laws, actuator limits and tests for ambiguous pose reconstruction.
 

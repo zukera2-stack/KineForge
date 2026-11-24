@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "solve_analyze_contact_report_equal": true,
+  "source_keys_and_timeline_preserved": true,
+  "contact_status": "SAMPLED_CONTACT_FEASIBLE"
+}
