@@ -16,3 +16,5 @@ Optional body `jointModels` declares neutral-relative joint DOFs, limits, passiv
 Optional body `collisionModel`: explicit bone-local sphere pairs and adaptive interframe clearance bounds. See [COLLISIONS.md](COLLISIONS.md).
 
 Optional explicit forward simulation input and output: [COUPLED.md](COUPLED.md). Separate scenario schema; no change to authored pose JSON.
+
+Optional coupled tracking options and scheduled sticking supports: [TRACKING.md](TRACKING.md), [SUPPORT.md](SUPPORT.md). Author key schema unchanged.
