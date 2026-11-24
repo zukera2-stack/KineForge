@@ -10,4 +10,6 @@
 
 0.7 alpha — dense coupled reference dynamics, explicit scenario integration, analytic independent trajectory holdout and convergence tests implemented. Remaining: keyframe tracking using coupled backend, contact-corrected actuator loads for authored clips, longer independent character holdouts, impact/sliding and scalable performance.
 
+0.7 beta — experimental inverse-dynamics PD trajectory replay with zero floating-base actuation and sampled key/angle gates. Contact-aware tracking, target generation compatible with joint models and optimal control remain open.
+
 0.8 — stable engine-independent API, packaging and integration adapters. Keep editors and proprietary data separate. No claim of production readiness until validated.

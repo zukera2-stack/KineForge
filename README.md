@@ -40,3 +40,6 @@ Explicit sphere-pair geometry, sampled collision objective and conservative inte
 ## 0.7 alpha: coupled dynamics
 
 Dense articulated mass matrix and bias forces, forward/inverse dynamics with explicit loads, fixed or floating base, exact hinge/fixed DOFs, sticking-contact reactions, and midpoint simulation. Run `python solver.py simulate body.json scenario.json simulation.json`. See [COUPLED.md](docs/COUPLED.md). The existing keyframe optimizer does not yet use this backend for tracking; the stage is partial.
+
+### 0.7 beta: physical replay
+`python solver.py track body.json solved.json options.json tracked.json` runs coupled feedback tracking. See [tracking contract](docs/TRACKING.md). Fixed-base and unsupported floating-base cases only; not contact-aware motion optimization.
