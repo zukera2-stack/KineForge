@@ -1,6 +1,6 @@
 # KineForge
 
-**Universal Physical Motion Solver — experimental 0.6.0**
+**Universal Physical Motion Solver — experimental 0.7.0-alpha**
 
 KineForge reconstructs and optimizes articulated-body motion from sparse positional keyframes. One numerical objective combines rigid forward kinematics, key fidelity, spatial curve regularity, rotational smoothness, observed joint envelopes and optional sampled inverse dynamics. It is independent of any game, editor or proprietary model.
 
@@ -26,7 +26,7 @@ See [prescribed contact contract](docs/CONTACTS.md) and run `python examples/con
 
 - Implemented: ordered single-root tree, fixed bone offsets, SO(3) optimization, spatial and angular trajectory diagnostics, observed rotation/rate envelopes, point-mass inertia validation, gravity-only sampled Newton–Euler inverse dynamics, conservative sampled point-contact feasibility and friction, candidate rejection, configurable joint constraints and gravity-only actuator estimates.
 - Experimental: positional contact penalties, sphere-pair collision penalties, profile calibration, inferred twist, heuristic objective weighting.
-- Not implemented: sliding/impact dynamics, contact discovery, contact-corrected actuator loads, validated biological anatomy, forward elastic integration, continuous collision detection, forward dynamics or mesh deformation certification.
+- Not implemented: sliding/impact dynamics, contact discovery, contact-corrected actuator loads, validated biological anatomy, forward elastic integration, continuous collision detection, coupled keyframe tracking or mesh deformation certification.
 
 The current JSON field names retain legacy `sam.*` schema identifiers for interoperability. See [data contract](docs/FORMAT.md) and [roadmap](docs/ROADMAP.md). The editor is intentionally outside this repository. All examples and public tests use synthetic data; no third-party game assets, private motion datasets or derived character profiles are distributed.
 
@@ -36,3 +36,7 @@ The current JSON field names retain legacy `sam.*` schema identifiers for intero
 ## 0.6 collision candidate
 
 Explicit sphere-pair geometry, sampled collision objective and conservative interframe clearance gate. Not full mesh collision or impact dynamics. See [COLLISIONS.md](docs/COLLISIONS.md).
+
+## 0.7 alpha: coupled dynamics
+
+Dense articulated mass matrix and bias forces, forward/inverse dynamics with explicit loads, fixed or floating base, exact hinge/fixed DOFs, sticking-contact reactions, and midpoint simulation. Run `python solver.py simulate body.json scenario.json simulation.json`. See [COUPLED.md](docs/COUPLED.md). The existing keyframe optimizer does not yet use this backend for tracking; the stage is partial.

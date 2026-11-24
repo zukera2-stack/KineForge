@@ -8,6 +8,6 @@
 
 0.6 — implemented explicit bone-local sphere pairs, substep collision objective and conservative clearance gate over declared shortest-arc FK paths. Mesh fit, impacts and environment collision remain future work.
 
-0.7 — coupled forward dynamics and inverse/forward consistency, convergence and deterministic reproducibility, independent holdout benchmark with error against source poses (not just smoothness).
+0.7 alpha — dense coupled reference dynamics, explicit scenario integration, analytic independent trajectory holdout and convergence tests implemented. Remaining: keyframe tracking using coupled backend, contact-corrected actuator loads for authored clips, longer independent character holdouts, impact/sliding and scalable performance.
 
 0.8 — stable engine-independent API, packaging and integration adapters. Keep editors and proprietary data separate. No claim of production readiness until validated.

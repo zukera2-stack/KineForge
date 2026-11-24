@@ -6,7 +6,7 @@ import numpy as np
 from scipy.interpolate import CubicSpline
 from scipy.spatial.transform import Rotation as R, Slerp
 import torch
-VERSION='0.6.0'
+VERSION='0.7.0'
 import dynamics
 import contact as contact_model
 import joints as joint_model
@@ -205,8 +205,11 @@ def diagnostics(path,P,L,fps,names,start,ids,b):
         for i in range(len(P)):
             for b,n in enumerate(names):w.writerow([i+start,i/fps,int(i in ids),n,*P[i,b],*q[i,b],scalar(tw[i,b]),*[scalar(z[i-1,b]) if 0<i<len(P)-1 else '' for z in turns],*[c for arr,k in [(v,1),(a,2),(j,3),(omega,1),(alpha,2),(aj,3)] for c in (arr[i-k,b] if i>=k else ['']*3)]])
 def main():
-    a=argparse.ArgumentParser();sub=a.add_subparsers(dest='mode',required=True);s=sub.add_parser('solve');s.add_argument('keys');s.add_argument('body');s.add_argument('reference');s.add_argument('output');s.add_argument('--initial');s.add_argument('--iterations',type=int,default=120);s.add_argument('--strength',type=float,default=.6);s.add_argument('--max-key-mm',type=float,default=100);s.add_argument('--max-step-deg',type=float);z=sub.add_parser('analyze');z.add_argument('solved');z.add_argument('body');z.add_argument('output');c=sub.add_parser('compare');c.add_argument('first');c.add_argument('second');c.add_argument('body');c.add_argument('output');args=a.parse_args();torch.set_num_threads(1)
+    a=argparse.ArgumentParser();sub=a.add_subparsers(dest='mode',required=True);sim=sub.add_parser('simulate');sim.add_argument('body');sim.add_argument('scenario');sim.add_argument('output');s=sub.add_parser('solve');s.add_argument('keys');s.add_argument('body');s.add_argument('reference');s.add_argument('output');s.add_argument('--initial');s.add_argument('--iterations',type=int,default=120);s.add_argument('--strength',type=float,default=.6);s.add_argument('--max-key-mm',type=float,default=100);s.add_argument('--max-step-deg',type=float);z=sub.add_parser('analyze');z.add_argument('solved');z.add_argument('body');z.add_argument('output');c=sub.add_parser('compare');c.add_argument('first');c.add_argument('second');c.add_argument('body');c.add_argument('output');args=a.parse_args();torch.set_num_threads(1)
     b=read(args.body)
+    if args.mode=='simulate':
+        from coupled import simulate
+        write(args.output,simulate(b,read(args.scenario)));return
     def analyze(path):
         d=read(path);need(d['rig']==b['rig'],'rig mismatch');p=rig_check(d['rig']);P=np.array([k['positions'] for k in d['keyframes']]);L=R.from_quat(np.array(d['localQuaternionXYZW']).reshape(-1,4)).as_matrix().reshape(len(P),len(p),3,3);keys=d['originalAuthorKeys'];ids=np.array([k['frame']-d['timeline']['start'] for k in keys]);Y=np.array([k['positions'] for k in keys]);fps=d['timeline']['fps'];o=np.array(b['offsets_m']);r=metrics(P,L,fps,ids,Y,d['rig']['bones'],o,p)
         if 'physical' in b:
