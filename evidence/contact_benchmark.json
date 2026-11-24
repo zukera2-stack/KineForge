@@ -1,0 +1,172 @@
+{
+  "version": "0.4.0",
+  "cases": [
+    {
+      "case": "static",
+      "keys": 3,
+      "frames": 9,
+      "analytic_contact_status": "SAMPLED_CONTACT_FEASIBLE",
+      "solver_status": "KINEMATIC_CANDIDATE",
+      "flags": [],
+      "contact_status": "SAMPLED_CONTACT_FEASIBLE",
+      "force_residual_max_N": 1.5099113321816392e-14,
+      "moment_residual_max_Nm": 1.7770382992678697e-15,
+      "anchor_gap_max_m": 0.0,
+      "key_max_mm": 0.0,
+      "first_frame_forces": [
+        {
+          "id": "left",
+          "point_m": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "force_N": [
+            -5.885999999999999,
+            -2.4604350127547815e-17,
+            14.714999999999998
+          ],
+          "normal_N": 14.714999999999998,
+          "tangent_N": 5.885999999999999,
+          "mu": 0.4
+        },
+        {
+          "id": "right",
+          "point_m": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "force_N": [
+            5.885999999999986,
+            -2.460435012754742e-17,
+            24.525000000000006
+          ],
+          "normal_N": 24.525000000000006,
+          "tangent_N": 5.885999999999986,
+          "mu": 0.4
+        }
+      ]
+    },
+    {
+      "case": "flight",
+      "keys": 3,
+      "frames": 9,
+      "analytic_contact_status": "SAMPLED_CONTACT_FEASIBLE",
+      "solver_status": "REVIEW_REQUIRED",
+      "flags": [
+        "OPTIMIZATION_REJECTED_KEEP_INITIAL"
+      ],
+      "contact_status": "SAMPLED_CONTACT_FEASIBLE",
+      "force_residual_max_N": 1.2150280781497713e-12,
+      "moment_residual_max_Nm": 3.0375701953744283e-13,
+      "anchor_gap_max_m": 0.0,
+      "key_max_mm": 0.0,
+      "first_frame_forces": []
+    },
+    {
+      "case": "hover",
+      "keys": 9,
+      "frames": 9,
+      "analytic_contact_status": "REVIEW_REQUIRED",
+      "solver_status": "REVIEW_REQUIRED",
+      "flags": [
+        "CONTACT_WRENCH_RESIDUAL",
+        "OPTIMIZATION_REJECTED_KEEP_INITIAL"
+      ],
+      "contact_status": "REVIEW_REQUIRED",
+      "force_residual_max_N": 39.24000000000036,
+      "moment_residual_max_Nm": 9.81000000000009,
+      "anchor_gap_max_m": 0.0,
+      "key_max_mm": 1.1102230246251565e-13,
+      "first_frame_forces": []
+    },
+    {
+      "case": "accelerate",
+      "keys": 9,
+      "frames": 9,
+      "analytic_contact_status": "REVIEW_REQUIRED",
+      "solver_status": "REVIEW_REQUIRED",
+      "flags": [
+        "CONTACT_WRENCH_RESIDUAL",
+        "CONTACT_ANCHOR_DRIFT",
+        "OPTIMIZATION_REJECTED_KEEP_INITIAL"
+      ],
+      "contact_status": "REVIEW_REQUIRED",
+      "force_residual_max_N": 22.565697495275792,
+      "moment_residual_max_Nm": 5.048846907963163e-15,
+      "anchor_gap_max_m": 0.8,
+      "key_max_mm": 0.0,
+      "first_frame_forces": [
+        {
+          "id": "left",
+          "point_m": [
+            -0.9875,
+            0.0,
+            0.0
+          ],
+          "force_N": [
+            7.371793103448276,
+            -1.3541764242171696e-15,
+            18.42948275862069
+          ],
+          "normal_N": 18.42948275862069,
+          "tangent_N": 7.371793103448276,
+          "mu": 0.4
+        },
+        {
+          "id": "right",
+          "point_m": [
+            1.0125,
+            0.0,
+            0.0
+          ],
+          "force_N": [
+            11.67648275862072,
+            -2.1449350853466178e-15,
+            29.191206896551797
+          ],
+          "normal_N": 29.191206896551797,
+          "tangent_N": 11.67648275862072,
+          "mu": 0.4
+        }
+      ]
+    },
+    {
+      "case": "single_support",
+      "keys": 9,
+      "frames": 9,
+      "analytic_contact_status": "REVIEW_REQUIRED",
+      "solver_status": "REVIEW_REQUIRED",
+      "flags": [
+        "CONTACT_WRENCH_RESIDUAL",
+        "OPTIMIZATION_REJECTED_KEEP_INITIAL"
+      ],
+      "contact_status": "REVIEW_REQUIRED",
+      "force_residual_max_N": 19.396232615676702,
+      "moment_residual_max_Nm": 22.976052631578945,
+      "anchor_gap_max_m": 0.0,
+      "key_max_mm": 0.0,
+      "first_frame_forces": [
+        {
+          "id": "left",
+          "point_m": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "force_N": [
+            8.77736842105263,
+            -1.612376421266874e-15,
+            21.943421052631574
+          ],
+          "normal_N": 21.943421052631574,
+          "tangent_N": 8.77736842105263,
+          "mu": 0.4
+        }
+      ]
+    }
+  ],
+  "passed": 5,
+  "note": "Expected failures must be rejected. Sampled wrench feasibility is not full physical acceptance."
+}

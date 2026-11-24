@@ -1,4 +1,4 @@
-# Experimental JSON contract (0.3)
+# Experimental JSON contract (0.4)
 
 Coordinates in meters, time in seconds, FPS positive; a rig declares its coordinate convention. Bone names are unique. One root has parent -1; every other parent is an earlier index. 2–256 bones, 2–10000 frames. Input keys are strictly increasing, include both boundaries, and contain one XYZ triplet per bone. Quaternions are XYZW; matrices act on column vectors. Fixed offsets are expressed in the parent's reference basis. Local rotation composition is `G_child = G_parent @ L_child`, and `P_child = P_parent + G_parent @ offset_child`. Root translation is the first joint position.
 
@@ -8,3 +8,5 @@ Coordinates in meters, time in seconds, FPS positive; a rig declares its coordin
 - Solved (`sam.skeletal.solved.v1`): `originalAuthorKeys` exact input keys, `sourceKeys` corrected positions for editor import, `keyframes` all frames, `lockedFrames` indices, `localQuaternionXYZW` per frame, solver diagnostics. Locked frames are editor metadata, not a hard interior key constraint. Endpoints are fixed after initial reconstruction; impossible poses are flagged. Positions alone do not identify all twists or leaf rotations.
 
 Numerical thresholds are explicit and experimental, not guarantees of motion realism. No game-specific assumptions are required by the public kernel.
+
+Optional `solverHints.physicalContacts` and `contactOptions` declare sampled sticking contacts, distinct from legacy positional hints. See [CONTACTS.md](CONTACTS.md) for the complete contract and residual gates.

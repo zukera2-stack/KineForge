@@ -17,3 +17,4 @@ jobs:
       - run: python examples/generate.py demo_input
       - run: python solver.py solve demo_input/keys.json demo_input/body.json demo_input/reference.json demo_output --iterations 120
       - run: python solver.py analyze demo_output/solved.json demo_input/body.json analysis.json
+      - run: python examples/contact_benchmark.py contact_benchmark.json
