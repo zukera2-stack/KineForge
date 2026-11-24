@@ -1,0 +1,155 @@
+{
+  "version": "0.6.0",
+  "passed": 5,
+  "cases": [
+    {
+      "case": "clear",
+      "status": "DECLARED_PROXY_PATH_PASS",
+      "flags": [],
+      "pairs": [
+        {
+          "pair": [
+            "fixed",
+            "moving"
+          ],
+          "min_sampled_clearance_m": 6.387620847522678,
+          "certified_lower_bound_m": 6.125821459723529,
+          "worst_frame": 11.0,
+          "penetrating_intervals": [],
+          "uncertified_intervals": []
+        }
+      ],
+      "max_substeps_used": 1,
+      "tolerance_m": 0.001,
+      "coverage": "explicit sphere pairs; linear root and shortest-arc local SO(3) between frames; no mesh, impulse or environment collision"
+    },
+    {
+      "case": "static",
+      "status": "REVIEW_REQUIRED",
+      "flags": [
+        "COLLISION_PENETRATION"
+      ],
+      "pairs": [
+        {
+          "pair": [
+            "fixed",
+            "moving"
+          ],
+          "min_sampled_clearance_m": -0.3999999999999998,
+          "certified_lower_bound_m": -0.3999999999999998,
+          "worst_frame": 10.0,
+          "penetrating_intervals": [
+            10
+          ],
+          "uncertified_intervals": []
+        }
+      ],
+      "max_substeps_used": 1,
+      "tolerance_m": 0.001,
+      "coverage": "explicit sphere pairs; linear root and shortest-arc local SO(3) between frames; no mesh, impulse or environment collision"
+    },
+    {
+      "case": "tunneling",
+      "status": "REVIEW_REQUIRED",
+      "flags": [
+        "COLLISION_PENETRATION"
+      ],
+      "pairs": [
+        {
+          "pair": [
+            "fixed",
+            "moving"
+          ],
+          "min_sampled_clearance_m": -0.3999999999999998,
+          "certified_lower_bound_m": -1.0981317007977318,
+          "worst_frame": 10.5,
+          "penetrating_intervals": [
+            10
+          ],
+          "uncertified_intervals": []
+        }
+      ],
+      "max_substeps_used": 2,
+      "tolerance_m": 0.001,
+      "coverage": "explicit sphere pairs; linear root and shortest-arc local SO(3) between frames; no mesh, impulse or environment collision"
+    },
+    {
+      "case": "uncertified",
+      "status": "REVIEW_REQUIRED",
+      "flags": [
+        "COLLISION_INTERVAL_UNCERTIFIED"
+      ],
+      "pairs": [
+        {
+          "pair": [
+            "fixed",
+            "moving"
+          ],
+          "min_sampled_clearance_m": 0.0009999999999997788,
+          "certified_lower_bound_m": -0.6971317007977321,
+          "worst_frame": 10.5,
+          "penetrating_intervals": [],
+          "uncertified_intervals": [
+            10
+          ]
+        }
+      ],
+      "max_substeps_used": 2,
+      "tolerance_m": 0.001,
+      "coverage": "explicit sphere pairs; linear root and shortest-arc local SO(3) between frames; no mesh, impulse or environment collision"
+    },
+    {
+      "case": "repair",
+      "initial": {
+        "status": "REVIEW_REQUIRED",
+        "flags": [
+          "COLLISION_PENETRATION"
+        ],
+        "pairs": [
+          {
+            "pair": [
+              "fixed",
+              "moving"
+            ],
+            "min_sampled_clearance_m": -0.13894761555989688,
+            "certified_lower_bound_m": -0.35711377205918815,
+            "worst_frame": 13.0,
+            "penetrating_intervals": [
+              12,
+              13
+            ],
+            "uncertified_intervals": []
+          }
+        ],
+        "max_substeps_used": 1,
+        "tolerance_m": 0.001,
+        "coverage": "explicit sphere pairs; linear root and shortest-arc local SO(3) between frames; no mesh, impulse or environment collision"
+      },
+      "final": {
+        "status": "DECLARED_PROXY_PATH_PASS",
+        "flags": [],
+        "pairs": [
+          {
+            "pair": [
+              "fixed",
+              "moving"
+            ],
+            "min_sampled_clearance_m": 0.021607062396738985,
+            "certified_lower_bound_m": 0.00967331413006162,
+            "worst_frame": 13.0,
+            "penetrating_intervals": [],
+            "uncertified_intervals": []
+          }
+        ],
+        "max_substeps_used": 16,
+        "tolerance_m": 0.001,
+        "coverage": "explicit sphere pairs; linear root and shortest-arc local SO(3) between frames; no mesh, impulse or environment collision"
+      },
+      "key_max_mm": 0.0026959126898627402,
+      "solver_status": "REVIEW_REQUIRED",
+      "solver_flags": [
+        "REGRESSION_rms_jerk_mps3"
+      ]
+    }
+  ]
+}

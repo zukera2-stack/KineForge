@@ -1,6 +1,6 @@
 # KineForge
 
-**Universal Physical Motion Solver — experimental 0.5.0**
+**Universal Physical Motion Solver — experimental 0.6.0**
 
 KineForge reconstructs and optimizes articulated-body motion from sparse positional keyframes. One numerical objective combines rigid forward kinematics, key fidelity, spatial curve regularity, rotational smoothness, observed joint envelopes and optional sampled inverse dynamics. It is independent of any game, editor or proprietary model.
 
@@ -31,3 +31,8 @@ See [prescribed contact contract](docs/CONTACTS.md) and run `python examples/con
 The current JSON field names retain legacy `sam.*` schema identifiers for interoperability. See [data contract](docs/FORMAT.md) and [roadmap](docs/ROADMAP.md). The editor is intentionally outside this repository. All examples and public tests use synthetic data; no third-party game assets, private motion datasets or derived character profiles are distributed.
 
 [Русское описание](README_RU.md) · [Contributing](CONTRIBUTING.md) · MIT license (project-owned code only).
+
+
+## 0.6 collision candidate
+
+Explicit sphere-pair geometry, sampled collision objective and conservative interframe clearance gate. Not full mesh collision or impact dynamics. See [COLLISIONS.md](docs/COLLISIONS.md).

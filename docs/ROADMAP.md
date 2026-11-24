@@ -6,7 +6,7 @@
 
 0.5 — implemented experimental configurable hinge/ball/fixed DOFs, neutral-relative axes, sampled limits, passive spring-damper laws and gravity-only actuator bounds, with tests for ambiguous pose reconstruction. Contact-corrected loads, other DOFs and coupled forward integration remain future work.
 
-0.6 — collision geometry and self-contact, continuous or substep checks, robust failure reporting.
+0.6 — implemented explicit bone-local sphere pairs, substep collision objective and conservative clearance gate over declared shortest-arc FK paths. Mesh fit, impacts and environment collision remain future work.
 
 0.7 — coupled forward dynamics and inverse/forward consistency, convergence and deterministic reproducibility, independent holdout benchmark with error against source poses (not just smoothness).
 
