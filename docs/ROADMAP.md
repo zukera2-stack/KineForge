@@ -4,7 +4,7 @@
 
 0.4 — implemented experimental sampled contact feasibility: solve external force/moment balance with unilateral normal forces and friction constraints; verify static equilibrium, ballistic motion, impossible contacts and force residuals. Integrate as a differentiable or constrained term without changing key timing silently.
 
-0.5 — joint models: configurable hinge/ball/other DOFs, anatomical axes, explicit limits, spring-damper laws, actuator limits and tests for ambiguous pose reconstruction.
+0.5 — implemented experimental configurable hinge/ball/fixed DOFs, neutral-relative axes, sampled limits, passive spring-damper laws and gravity-only actuator bounds, with tests for ambiguous pose reconstruction. Contact-corrected loads, other DOFs and coupled forward integration remain future work.
 
 0.6 — collision geometry and self-contact, continuous or substep checks, robust failure reporting.
 

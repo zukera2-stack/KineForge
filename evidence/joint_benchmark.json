@@ -1,0 +1,177 @@
+{
+  "version": "0.5.0",
+  "passed": 5,
+  "cases": [
+    {
+      "case": "legal",
+      "status": "SAMPLED_JOINT_CONSTRAINTS_PASS",
+      "flags": [],
+      "joints": [
+        {
+          "joint": "hinge",
+          "type": "hinge",
+          "max_violation_deg": 0.0,
+          "violation_frames": [],
+          "ambiguous_frames": [],
+          "passive_peak_Nm": 6.283185307176584,
+          "spring_energy_peak_J": 1.6449340668466543,
+          "actuator_limit_Nm": null,
+          "actuator_peak_Nm": null,
+          "actuator_over_frames": []
+        }
+      ],
+      "load_assumption": "gravity-only inverse dynamics, interior samples; supported internal loads not resolved",
+      "limitations": "hinge principal twist chart, isotropic ball angular cone, no impacts, forward dynamics or biological calibration; unspecified joints unconstrained"
+    },
+    {
+      "case": "range",
+      "status": "REVIEW_REQUIRED",
+      "flags": [
+        "JOINT_RANGE_OR_AXIS_LIMIT"
+      ],
+      "joints": [
+        {
+          "joint": "hinge",
+          "type": "hinge",
+          "max_violation_deg": 14.999999999975175,
+          "violation_frames": [
+            11
+          ],
+          "ambiguous_frames": [],
+          "passive_peak_Nm": 12.566370614353973,
+          "spring_energy_peak_J": 6.57973626738746,
+          "actuator_limit_Nm": null,
+          "actuator_peak_Nm": null,
+          "actuator_over_frames": []
+        }
+      ],
+      "load_assumption": "gravity-only inverse dynamics, interior samples; supported internal loads not resolved",
+      "limitations": "hinge principal twist chart, isotropic ball angular cone, no impacts, forward dynamics or biological calibration; unspecified joints unconstrained"
+    },
+    {
+      "case": "wrong_axis",
+      "status": "REVIEW_REQUIRED",
+      "flags": [
+        "JOINT_RANGE_OR_AXIS_LIMIT"
+      ],
+      "joints": [
+        {
+          "joint": "hinge",
+          "type": "hinge",
+          "max_violation_deg": 29.999999999999996,
+          "violation_frames": [
+            11
+          ],
+          "ambiguous_frames": [],
+          "passive_peak_Nm": 0.0,
+          "spring_energy_peak_J": 0.0,
+          "actuator_limit_Nm": null,
+          "actuator_peak_Nm": null,
+          "actuator_over_frames": []
+        }
+      ],
+      "load_assumption": "gravity-only inverse dynamics, interior samples; supported internal loads not resolved",
+      "limitations": "hinge principal twist chart, isotropic ball angular cone, no impacts, forward dynamics or biological calibration; unspecified joints unconstrained"
+    },
+    {
+      "case": "gravity_actuator_overload",
+      "status": "REVIEW_REQUIRED",
+      "flags": [
+        "ACTUATOR_LIMIT"
+      ],
+      "joints": [
+        {
+          "joint": "hinge",
+          "type": "hinge",
+          "max_violation_deg": 0.0,
+          "violation_frames": [],
+          "ambiguous_frames": [],
+          "passive_peak_Nm": 0.0,
+          "spring_energy_peak_J": 0.0,
+          "actuator_limit_Nm": 10.0,
+          "actuator_peak_Nm": 10.791,
+          "actuator_over_frames": [
+            11
+          ]
+        }
+      ],
+      "load_assumption": "gravity-only inverse dynamics, interior samples; supported internal loads not resolved",
+      "limitations": "hinge principal twist chart, isotropic ball angular cone, no impacts, forward dynamics or biological calibration; unspecified joints unconstrained"
+    },
+    {
+      "case": "unobservable_twist_repair",
+      "initial": {
+        "status": "REVIEW_REQUIRED",
+        "flags": [
+          "JOINT_RANGE_OR_AXIS_LIMIT"
+        ],
+        "joints": [
+          {
+            "joint": "hinge",
+            "type": "hinge",
+            "max_violation_deg": 0.0,
+            "violation_frames": [],
+            "ambiguous_frames": [],
+            "passive_peak_Nm": 0.0,
+            "spring_energy_peak_J": 0.0,
+            "actuator_limit_Nm": null,
+            "actuator_peak_Nm": null,
+            "actuator_over_frames": []
+          },
+          {
+            "joint": "tip",
+            "type": "fixed",
+            "max_violation_deg": 50.0,
+            "violation_frames": [
+              12,
+              13,
+              14
+            ],
+            "ambiguous_frames": [],
+            "passive_peak_Nm": 0.0,
+            "spring_energy_peak_J": 0.0,
+            "actuator_limit_Nm": null,
+            "actuator_peak_Nm": null,
+            "actuator_over_frames": []
+          }
+        ],
+        "load_assumption": "gravity-only inverse dynamics, interior samples; supported internal loads not resolved",
+        "limitations": "hinge principal twist chart, isotropic ball angular cone, no impacts, forward dynamics or biological calibration; unspecified joints unconstrained"
+      },
+      "final": {
+        "status": "SAMPLED_JOINT_CONSTRAINTS_PASS",
+        "flags": [],
+        "joints": [
+          {
+            "joint": "hinge",
+            "type": "hinge",
+            "max_violation_deg": 0.00010359482039212328,
+            "violation_frames": [],
+            "ambiguous_frames": [],
+            "passive_peak_Nm": 5.96322743462312e-05,
+            "spring_energy_peak_J": 8.560380239175376e-11,
+            "actuator_limit_Nm": null,
+            "actuator_peak_Nm": null,
+            "actuator_over_frames": []
+          },
+          {
+            "joint": "tip",
+            "type": "fixed",
+            "max_violation_deg": 0.00016423764699285628,
+            "violation_frames": [],
+            "ambiguous_frames": [],
+            "passive_peak_Nm": 0.0,
+            "spring_energy_peak_J": 0.0,
+            "actuator_limit_Nm": null,
+            "actuator_peak_Nm": null,
+            "actuator_over_frames": []
+          }
+        ],
+        "load_assumption": "gravity-only inverse dynamics, interior samples; supported internal loads not resolved",
+        "limitations": "hinge principal twist chart, isotropic ball angular cone, no impacts, forward dynamics or biological calibration; unspecified joints unconstrained"
+      },
+      "key_max_mm": 0.01120171277049901,
+      "solver_status": "REVIEW_REQUIRED"
+    }
+  ]
+}
