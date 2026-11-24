@@ -1,0 +1,38 @@
+{
+  "analytic_holdout": [
+    {
+      "dt_s": 0.01,
+      "angle_rms_deg": 0.004082144672830898,
+      "com_rms_mm": 0.015461159499064483,
+      "energy_drift_peak_J": 1.0018044898973955e-05,
+      "equation_residual_peak": 3.66205343881779e-15
+    },
+    {
+      "dt_s": 0.005,
+      "angle_rms_deg": 0.0010211118111008721,
+      "com_rms_mm": 0.0038566557976227787,
+      "energy_drift_peak_J": 1.6302051175642873e-06,
+      "equation_residual_peak": 3.972054645195637e-15
+    },
+    {
+      "dt_s": 0.0025,
+      "angle_rms_deg": 0.00025529640379452024,
+      "com_rms_mm": 0.0009628616166856794,
+      "energy_drift_peak_J": 3.3049710257415654e-07,
+      "equation_residual_peak": 3.972054645195637e-15
+    }
+  ],
+  "free_recoil": {
+    "initial_acceleration": [
+      0.0,
+      0.0,
+      0.625,
+      0.0,
+      -9.999999999999995,
+      0.0,
+      13.749999999999995
+    ],
+    "linear_momentum_drift": 2.812501416790846e-07,
+    "angular_momentum_drift": 3.469446951953614e-17
+  }
+}

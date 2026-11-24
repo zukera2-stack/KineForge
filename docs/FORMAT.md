@@ -1,4 +1,4 @@
-# Experimental JSON contract (0.6)
+# Experimental JSON contract (0.7 alpha)
 
 Coordinates in meters, time in seconds, FPS positive; a rig declares its coordinate convention. Bone names are unique. One root has parent -1; every other parent is an earlier index. 2–256 bones, 2–10000 frames. Input keys are strictly increasing, include both boundaries, and contain one XYZ triplet per bone. Quaternions are XYZW; matrices act on column vectors. Fixed offsets are expressed in the parent's reference basis. Local rotation composition is `G_child = G_parent @ L_child`, and `P_child = P_parent + G_parent @ offset_child`. Root translation is the first joint position.
 
@@ -14,3 +14,5 @@ Optional `solverHints.physicalContacts` and `contactOptions` declare sampled sti
 Optional body `jointModels` declares neutral-relative joint DOFs, limits, passive coefficients and conditional actuator bounds. See [JOINTS.md](JOINTS.md).
 
 Optional body `collisionModel`: explicit bone-local sphere pairs and adaptive interframe clearance bounds. See [COLLISIONS.md](COLLISIONS.md).
+
+Optional explicit forward simulation input and output: [COUPLED.md](COUPLED.md). Separate scenario schema; no change to authored pose JSON.
