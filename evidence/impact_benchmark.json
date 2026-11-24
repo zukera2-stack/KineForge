@@ -1,0 +1,536 @@
+{
+  "elastic_drop": {
+    "status": "CONTACT_SCENARIO_CANDIDATE",
+    "minSampledGapM": 0.003861999999999987,
+    "firstFrame": {
+      "seconds": 0.0,
+      "rootM": [
+        0.0,
+        0.0,
+        0.1
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 0.1,
+      "normalVelocityMps": 0.0,
+      "energyJ": 1.9620000000000002,
+      "comM": [
+        0.0,
+        0.0,
+        0.1
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "lastFrame": {
+      "seconds": 0.2,
+      "rootM": [
+        0.0,
+        0.0,
+        0.06408564143619896
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          0.06408564143619896
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.8394282071873544,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 0.06408564143619896,
+      "normalVelocityMps": 0.8394282071873544,
+      "energyJ": 1.9619999999999997,
+      "comM": [
+        0.0,
+        0.0,
+        0.06408564143619896
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        1.678856414374709
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "impactEvents": [
+      {
+        "seconds": 0.14278431229293348,
+        "kind": "impact",
+        "mode": "stick",
+        "impulseNs": [
+          0.0,
+          0.0,
+          5.60285641437471
+        ],
+        "normalBeforeMps": -1.4007141035936774,
+        "normalAfterMps": 1.4007141035936774,
+        "tangentBeforeMps": 0.0,
+        "tangentAfterMps": 0.0,
+        "kineticLossJ": 0.0,
+        "momentumResidual": 0.0
+      }
+    ],
+    "supportSteps": 0
+  },
+  "inelastic_drop": {
+    "status": "CONTACT_SCENARIO_CANDIDATE",
+    "minSampledGapM": -3.179995329560814e-13,
+    "firstFrame": {
+      "seconds": 0.0,
+      "rootM": [
+        0.0,
+        0.0,
+        0.1
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          0.1
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 0.1,
+      "normalVelocityMps": 0.0,
+      "energyJ": 1.9620000000000002,
+      "comM": [
+        0.0,
+        0.0,
+        0.1
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "lastFrame": {
+      "seconds": 0.3,
+      "rootM": [
+        0.0,
+        0.0,
+        -3.179995329560814e-13
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          -3.179995329560814e-13
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": -3.179995329560814e-13,
+      "normalVelocityMps": 0.0,
+      "energyJ": -6.239150836598317e-12,
+      "comM": [
+        0.0,
+        0.0,
+        -3.179995329560814e-13
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "impactEvents": [
+      {
+        "seconds": 0.14278431229293348,
+        "kind": "impact",
+        "mode": "stick",
+        "impulseNs": [
+          0.0,
+          0.0,
+          2.801428207187355
+        ],
+        "normalBeforeMps": -1.4007141035936774,
+        "normalAfterMps": 0.0,
+        "tangentBeforeMps": 0.0,
+        "tangentAfterMps": 0.0,
+        "kineticLossJ": 1.9620000000062392,
+        "momentumResidual": 0.0
+      }
+    ],
+    "supportSteps": 16
+  },
+  "slide_stop": {
+    "status": "CONTACT_SCENARIO_CANDIDATE",
+    "minSampledGapM": 0.0,
+    "firstFrame": {
+      "seconds": 0.0,
+      "rootM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 0.0,
+      "normalVelocityMps": 0.0,
+      "energyJ": 1.0,
+      "comM": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        2.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "lastFrame": {
+      "seconds": 0.3,
+      "rootM": [
+        0.09699499999999996,
+        0.0,
+        0.0
+      ],
+      "positionsM": [
+        [
+          0.09699499999999996,
+          0.0,
+          0.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 0.0,
+      "normalVelocityMps": 0.0,
+      "energyJ": 0.0,
+      "comM": [
+        0.09699499999999996,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "impactEvents": [],
+    "supportSteps": 30
+  },
+  "airborne": {
+    "status": "CONTACT_SCENARIO_CANDIDATE",
+    "minSampledGapM": 1.95095,
+    "firstFrame": {
+      "seconds": 0.0,
+      "rootM": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          2.0
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 2.0,
+      "normalVelocityMps": 0.0,
+      "energyJ": 39.24,
+      "comM": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "lastFrame": {
+      "seconds": 0.1,
+      "rootM": [
+        0.0,
+        0.0,
+        1.95095
+      ],
+      "positionsM": [
+        [
+          0.0,
+          0.0,
+          1.95095
+        ]
+      ],
+      "localQuaternionXYZW": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "velocity": [
+        0.0,
+        0.0,
+        -0.9809999999999999,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gapM": 1.95095,
+      "normalVelocityMps": -0.9809999999999999,
+      "energyJ": 39.24,
+      "comM": [
+        0.0,
+        0.0,
+        1.95095
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        -1.9619999999999997
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "impactEvents": [],
+    "supportSteps": 0
+  },
+  "slidingConvergence": [
+    {
+      "dtSeconds": 0.02,
+      "positionErrorM": 0.0049050000000000205
+    },
+    {
+      "dtSeconds": 0.01,
+      "positionErrorM": 0.0024524999999999963
+    },
+    {
+      "dtSeconds": 0.005,
+      "positionErrorM": 0.0012262499999998733
+    }
+  ],
+  "articulatedImpact": {
+    "report": {
+      "mode": "frictionless",
+      "impulseNs": [
+        0.0,
+        0.0,
+        0.8170212765957446
+      ],
+      "normalBeforeMps": -2.0,
+      "normalAfterMps": 0.40000000000000036,
+      "tangentBeforeMps": 0.0,
+      "tangentAfterMps": 0.0,
+      "kineticLossJ": 0.653617021276597,
+      "momentumResidual": 7.928578270080922e-16
+    },
+    "beforeVelocity": [
+      0.0,
+      0.0,
+      -2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "afterVelocity": [
+      0.0,
+      0.0,
+      -2.153191489361702,
+      0.0,
+      -7.42152954178828e-16,
+      0.0,
+      -2.5531914893617014
+    ],
+    "before": {
+      "energyJ": 6.0,
+      "comM": [
+        0.16666666666666666,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        -6.0
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        1.1102230246251565e-16,
+        0.0
+      ]
+    },
+    "after": {
+      "energyJ": 5.346382978723403,
+      "comM": [
+        0.16666666666666666,
+        0.0,
+        0.0
+      ],
+      "linearMomentumKgMps": [
+        0.0,
+        0.0,
+        -5.182978723404254
+      ],
+      "angularMomentumCOMKgM2ps": [
+        0.0,
+        -0.6808510638297873,
+        0.0
+      ]
+    }
+  }
+}

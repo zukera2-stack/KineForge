@@ -23,3 +23,4 @@ jobs:
       - run: python examples/coupled_benchmark.py coupled_benchmark.json
       - run: python examples/tracking_benchmark.py tracking_benchmark.json
       - run: python examples/support_benchmark.py support_benchmark.json
+      - run: python examples/impact_benchmark.py impact_benchmark.json

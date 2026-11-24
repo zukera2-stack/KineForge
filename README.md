@@ -1,6 +1,6 @@
 # KineForge
 
-**Universal Physical Motion Solver — experimental 0.7.0-gamma**
+**Universal Physical Motion Solver — experimental 0.7.0-delta**
 
 KineForge reconstructs and optimizes articulated-body motion from sparse positional keyframes. One numerical objective combines rigid forward kinematics, key fidelity, spatial curve regularity, rotational smoothness, observed joint envelopes and optional sampled inverse dynamics. It is independent of any game, editor or proprietary model.
 
@@ -26,7 +26,7 @@ See [prescribed contact contract](docs/CONTACTS.md) and run `python examples/con
 
 - Implemented: ordered single-root tree, fixed bone offsets, SO(3) optimization, spatial and angular trajectory diagnostics, observed rotation/rate envelopes, point-mass inertia validation, gravity-only sampled Newton–Euler inverse dynamics, conservative sampled point-contact feasibility and friction, candidate rejection, configurable joint constraints and gravity-only actuator estimates.
 - Experimental: positional contact penalties, sphere-pair collision penalties, profile calibration, inferred twist, heuristic objective weighting.
-- Not implemented: sliding/impact dynamics, contact discovery, validated biological anatomy, continuous full-mesh collision detection, impact/sliding response, global coupled trajectory optimization or mesh deformation certification.
+- Not implemented: general multi-contact impact/sliding dynamics, contact discovery, validated biological anatomy, continuous full-mesh collision detection, impact/sliding response, global coupled trajectory optimization or mesh deformation certification.
 
 The current JSON field names retain legacy `sam.*` schema identifiers for interoperability. See [data contract](docs/FORMAT.md) and [roadmap](docs/ROADMAP.md). The editor is intentionally outside this repository. All examples and public tests use synthetic data; no third-party game assets, private motion datasets or derived character profiles are distributed.
 
@@ -46,3 +46,6 @@ Dense articulated mass matrix and bias forces, forward/inverse dynamics with exp
 
 ### 0.7 gamma: scheduled contact tracking
 Optional explicit half-open support schedules couple sticking reactions and joint actuation at each integration sample, with force-cone, cap and drift gates. See [SUPPORT.md](docs/SUPPORT.md). No contact discovery, impact, sliding or horizon-wide optimal control.
+
+### 0.7 delta: single-point impact and sliding experiment
+`simulate` accepts `kineforge.contact_simulation.v1`. Newton restitution, Coulomb stick/slip impulse and bracketed contact onset; one declared point against a static plane. Not integrated into `track`; no simultaneous impacts or full CCD. See [IMPACT.md](docs/IMPACT.md).
