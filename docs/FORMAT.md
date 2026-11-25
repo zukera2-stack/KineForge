@@ -26,3 +26,7 @@ The `simulate` command also accepts `kineforge.contact_simulation.v1` for one ex
 ## Multi-contact extension
 
 `kineforge.multi_contact_simulation.v1` and optional `supportActivationImpulse` in tracking options: see [MULTI_CONTACT.md](MULTI_CONTACT.md).
+
+## Whole-horizon shooting (0.7 Zeta)
+
+`kineforge.horizon.v1` options and `kineforge.horizon.result.v1` output: see [HORIZON.md](HORIZON.md). Original author keys and timeline retained; complete replay output is editor-compatible but only a diagnostic candidate. Explicit schedule alternatives, bounded torques and refined replay verification. No migration of existing schemas.

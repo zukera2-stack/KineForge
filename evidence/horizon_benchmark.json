@@ -1,0 +1,236 @@
+{
+  "analyticHoldout": {
+    "report": {
+      "status": "HORIZON_CANDIDATE",
+      "selectedScheduleIndex": 0,
+      "candidates": [
+        {
+          "scheduleIndex": 0,
+          "evaluations": 17,
+          "zeroControlObjective": 0.0004041138258513193,
+          "inverseSeedObjective": 2.5101869558068793e-06,
+          "searchConverged": true,
+          "objective": 9.841407681721123e-20,
+          "controlTorquesNm": [
+            [
+              1.2179500475680929,
+              -0.5907466746596174
+            ]
+          ],
+          "fineFailure": null,
+          "equationResidualMax": 7.944109290391274e-15,
+          "keyMaxMm": 0.04083761586704316,
+          "keyRmsMm": 0.01450737129455589,
+          "targetAngleMaxDeg": 0.4758386463954942,
+          "replayDifferenceMaxMm": 0.04083781144770519,
+          "replayAngleMaxDeg": 0.008348333748835344,
+          "exportCollision": "NOT_CONFIGURED",
+          "status": "HORIZON_CANDIDATE",
+          "flags": []
+        }
+      ],
+      "rootActuationAllowed": false,
+      "actuatorComponentCapsNm": [
+        50.0,
+        50.0
+      ],
+      "maxRolloutsPerSchedule": 200,
+      "initialVelocitySource": "explicit",
+      "controlBlockByInterval": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "substeps": 4,
+      "verificationSubsteps": 8,
+      "limitations": [
+        "Small bounded direct shooting, local numerical search only.",
+        "Only supplied schedule alternatives; no automatic contact discovery or sliding tracking.",
+        "Strict minimum-norm sticking reactions can reject feasible redundant support.",
+        "Refinement and export proxy checks are sampled numerical checks, not continuous physics or game acceptance."
+      ]
+    },
+    "trueControlNm": [
+      1.2,
+      -0.6
+    ],
+    "hiddenKeyframeIndices": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ],
+    "hiddenPositionRmsMm": 0.01199595449235328,
+    "interpolatedTargetHiddenRmsMm": 1.0697632978918188,
+    "hiddenLocalAngleRmsDeg": 0.008451530264503598
+  },
+  "landingSchedule": {
+    "status": "HORIZON_CANDIDATE",
+    "selectedScheduleIndex": 1,
+    "candidates": [
+      {
+        "scheduleIndex": 0,
+        "evaluations": 2,
+        "zeroControlObjective": 421824.0,
+        "inverseSeedObjective": 421824.0,
+        "searchConverged": true,
+        "status": "REVIEW_REQUIRED",
+        "flags": [
+          "NO_COMPLETE_REPLAY"
+        ],
+        "failure": {
+          "frame": 2.0,
+          "reason": "impact activation anchor mismatch"
+        }
+      },
+      {
+        "scheduleIndex": 1,
+        "evaluations": 2,
+        "zeroControlObjective": 3.987958938177838e-34,
+        "inverseSeedObjective": 3.987958938177838e-34,
+        "searchConverged": true,
+        "objective": 3.987958938177838e-34,
+        "controlTorquesNm": [
+          [],
+          []
+        ],
+        "fineFailure": null,
+        "equationResidualMax": 0.0,
+        "keyMaxMm": 3.747002708109903e-14,
+        "keyRmsMm": 2.200114525858427e-14,
+        "targetAngleMaxDeg": 0.0,
+        "replayDifferenceMaxMm": 6.800116025829084e-14,
+        "replayAngleMaxDeg": 0.0,
+        "exportCollision": "NOT_CONFIGURED",
+        "status": "HORIZON_CANDIDATE",
+        "flags": []
+      }
+    ],
+    "rootActuationAllowed": false,
+    "actuatorComponentCapsNm": [],
+    "maxRolloutsPerSchedule": 200,
+    "initialVelocitySource": "explicit",
+    "controlBlockByInterval": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "substeps": 2,
+    "verificationSubsteps": 4,
+    "limitations": [
+      "Small bounded direct shooting, local numerical search only.",
+      "Only supplied schedule alternatives; no automatic contact discovery or sliding tracking.",
+      "Strict minimum-norm sticking reactions can reject feasible redundant support.",
+      "Refinement and export proxy checks are sampled numerical checks, not continuous physics or game acceptance."
+    ]
+  },
+  "hover": {
+    "status": "REVIEW_REQUIRED",
+    "selectedScheduleIndex": 0,
+    "candidates": [
+      {
+        "scheduleIndex": 0,
+        "evaluations": 2,
+        "zeroControlObjective": 0.014698059356249992,
+        "inverseSeedObjective": 0.014698059356249992,
+        "searchConverged": true,
+        "objective": 0.014698059356249992,
+        "controlTorquesNm": [
+          [],
+          []
+        ],
+        "fineFailure": null,
+        "equationResidualMax": 0.0,
+        "keyMaxMm": 196.1999999999997,
+        "keyRmsMm": 116.76235480667542,
+        "targetAngleMaxDeg": 0.0,
+        "replayDifferenceMaxMm": 2.220446049250313e-13,
+        "replayAngleMaxDeg": 0.0,
+        "exportCollision": "NOT_CONFIGURED",
+        "status": "REVIEW_REQUIRED",
+        "flags": [
+          "KEY_DEVIATION_LIMIT"
+        ]
+      }
+    ],
+    "rootActuationAllowed": false,
+    "actuatorComponentCapsNm": [],
+    "maxRolloutsPerSchedule": 200,
+    "initialVelocitySource": "target derivative",
+    "controlBlockByInterval": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "substeps": 2,
+    "verificationSubsteps": 4,
+    "limitations": [
+      "Small bounded direct shooting, local numerical search only.",
+      "Only supplied schedule alternatives; no automatic contact discovery or sliding tracking.",
+      "Strict minimum-norm sticking reactions can reject feasible redundant support.",
+      "Refinement and export proxy checks are sampled numerical checks, not continuous physics or game acceptance."
+    ]
+  },
+  "limitedActuator": {
+    "status": "REVIEW_REQUIRED",
+    "selectedScheduleIndex": 0,
+    "candidates": [
+      {
+        "scheduleIndex": 0,
+        "evaluations": 5,
+        "zeroControlObjective": 3.5383835191522424e-05,
+        "inverseSeedObjective": 3.523553605831755e-05,
+        "searchConverged": true,
+        "objective": 3.523553605831755e-05,
+        "controlTorquesNm": [
+          [
+            -0.01
+          ],
+          [
+            -0.01
+          ]
+        ],
+        "fineFailure": null,
+        "equationResidualMax": 0.0,
+        "keyMaxMm": 0.0,
+        "keyRmsMm": 0.0,
+        "targetAngleMaxDeg": 8.742273495602351,
+        "replayDifferenceMaxMm": 0.0,
+        "replayAngleMaxDeg": 0.001474210863871881,
+        "exportCollision": "NOT_CONFIGURED",
+        "status": "REVIEW_REQUIRED",
+        "flags": [
+          "TARGET_ORIENTATION_DEVIATION"
+        ]
+      }
+    ],
+    "rootActuationAllowed": false,
+    "actuatorComponentCapsNm": [
+      0.01
+    ],
+    "maxRolloutsPerSchedule": 200,
+    "initialVelocitySource": "target derivative",
+    "controlBlockByInterval": [
+      0,
+      0,
+      1
+    ],
+    "substeps": 2,
+    "verificationSubsteps": 4,
+    "limitations": [
+      "Small bounded direct shooting, local numerical search only.",
+      "Only supplied schedule alternatives; no automatic contact discovery or sliding tracking.",
+      "Strict minimum-norm sticking reactions can reject feasible redundant support.",
+      "Refinement and export proxy checks are sampled numerical checks, not continuous physics or game acceptance."
+    ]
+  }
+}

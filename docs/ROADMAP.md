@@ -18,4 +18,6 @@
 
 0.7 epsilon — simultaneous inelastic point/plane impulses, bounded multi-point simulation and scheduled sticking activation in tracking. Remaining: sliding-aware tracking, automatic contact scheduling, horizon-wide control, continuous environment collision and independent character holdouts.
 
+0.7 zeta — bounded whole-horizon direct shooting with explicit discrete schedule alternatives and independent step-refinement replay, synthetic sparse-key holdout. Partial: larger rigs, robust constrained multi-contact allocation, automatic contact selection, continuous collision and character acceptance remain open.
+
 0.8 — stable engine-independent API, packaging and integration adapters. Keep editors and proprietary data separate. No claim of production readiness until validated.
