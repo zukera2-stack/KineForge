@@ -1,0 +1,46 @@
+{
+  "status": "CONTACT_SCENARIO_CANDIDATE",
+  "frames": 31,
+  "firstImpact": {
+    "seconds": 0.14278431229293348,
+    "kind": "impact",
+    "contacts": [
+      {
+        "id": "a",
+        "mode": "stick",
+        "impulseNs": [
+          0.0,
+          0.0,
+          1.400714103575616
+        ],
+        "normalBeforeMps": -1.4007141035936774,
+        "normalAfterMps": -1.8061330209206972e-11,
+        "tangentAfterMps": 0.0
+      },
+      {
+        "id": "b",
+        "mode": "stick",
+        "impulseNs": [
+          0.0,
+          0.0,
+          1.400714103575616
+        ],
+        "normalBeforeMps": -1.4007141035936774,
+        "normalAfterMps": -1.8061330209206972e-11,
+        "tangentAfterMps": 0.0
+      }
+    ],
+    "kineticLossJ": 1.9620000000062392,
+    "momentumResidual": 0.0,
+    "complementarityResidual": 2.55435201918346e-11,
+    "iterations": 41
+  },
+  "lastVelocity": [
+    6.386922071008643e-169,
+    -2.606339954205775e-182,
+    -1.2650436254091346e-12,
+    0.0,
+    0.0,
+    1.2282001265630543e-183
+  ]
+}

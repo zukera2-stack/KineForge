@@ -216,6 +216,9 @@ def main():
         if scenario.get('schema')=='kineforge.contact_simulation.v1':
             from impact import simulate_contact
             write(args.output,simulate_contact(b,scenario));return
+        if scenario.get('schema')=='kineforge.multi_contact_simulation.v1':
+            from multi_contact import simulate_multi
+            write(args.output,simulate_multi(b,scenario));return
         write(args.output,simulate(b,scenario));return
     def analyze(path):
         d=read(path);need(d['rig']==b['rig'],'rig mismatch');p=rig_check(d['rig']);P=np.array([k['positions'] for k in d['keyframes']]);L=R.from_quat(np.array(d['localQuaternionXYZW']).reshape(-1,4)).as_matrix().reshape(len(P),len(p),3,3);keys=d['originalAuthorKeys'];ids=np.array([k['frame']-d['timeline']['start'] for k in keys]);Y=np.array([k['positions'] for k in keys]);fps=d['timeline']['fps'];o=np.array(b['offsets_m']);r=metrics(P,L,fps,ids,Y,d['rig']['bones'],o,p)

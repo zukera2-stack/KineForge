@@ -16,4 +16,6 @@
 
 0.7 delta — implemented single declared point/static plane impulse and first-order sliding/rest support simulation; no simultaneous contacts, full CCD or contact-aware tracking with impacts. Next: multi-contact impulse allocation and integration into physical replay, then whole-horizon control and independent holdouts.
 
+0.7 epsilon — simultaneous inelastic point/plane impulses, bounded multi-point simulation and scheduled sticking activation in tracking. Remaining: sliding-aware tracking, automatic contact scheduling, horizon-wide control, continuous environment collision and independent character holdouts.
+
 0.8 — stable engine-independent API, packaging and integration adapters. Keep editors and proprietary data separate. No claim of production readiness until validated.

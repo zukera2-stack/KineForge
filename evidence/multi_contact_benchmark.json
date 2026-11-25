@@ -1,0 +1,310 @@
+{
+  "symmetric": {
+    "expectedNormalImpulseNs": [
+      3,
+      3
+    ],
+    "report": {
+      "contacts": [
+        {
+          "id": "a",
+          "mode": "frictionless",
+          "impulseNs": [
+            0.0,
+            0.0,
+            3.0000000000000018
+          ],
+          "normalBeforeMps": -3.0,
+          "normalAfterMps": -8.43769498715119e-15,
+          "tangentAfterMps": 0.0
+        },
+        {
+          "id": "b",
+          "mode": "frictionless",
+          "impulseNs": [
+            0.0,
+            0.0,
+            3.0000000000000027
+          ],
+          "normalBeforeMps": -3.0,
+          "normalAfterMps": 1.2878587085651816e-14,
+          "tangentAfterMps": 0.0
+        }
+      ],
+      "kineticLossJ": 9.0,
+      "momentumResidual": 1.776356839400252e-16,
+      "complementarityResidual": 1.5888218580782548e-14,
+      "iterations": 7
+    },
+    "postVelocity": [
+      0.0,
+      0.0,
+      2.220446049250313e-15,
+      0.0,
+      -1.0658141036401503e-14,
+      0.0
+    ]
+  },
+  "asymmetric": {
+    "expectedNormalImpulseNs": [
+      2.25,
+      3.75
+    ],
+    "report": {
+      "contacts": [
+        {
+          "id": "a",
+          "mode": "frictionless",
+          "impulseNs": [
+            0.0,
+            0.0,
+            2.2499999999999893
+          ],
+          "normalBeforeMps": -3.0,
+          "normalAfterMps": -5.329070518200751e-15,
+          "tangentAfterMps": 0.0
+        },
+        {
+          "id": "b",
+          "mode": "frictionless",
+          "impulseNs": [
+            0.0,
+            0.0,
+            3.749999999999981
+          ],
+          "normalBeforeMps": -3.0,
+          "normalAfterMps": -1.9539925233402755e-14,
+          "tangentAfterMps": 0.0
+        }
+      ],
+      "kineticLossJ": 9.0,
+      "momentumResidual": 1.897149936107019e-15,
+      "complementarityResidual": 2.1316282072803006e-14,
+      "iterations": 7
+    },
+    "postVelocity": [
+      0.0,
+      0.0,
+      -1.2434497875801753e-14,
+      0.0,
+      7.105427357601002e-15,
+      0.0
+    ]
+  },
+  "drop": {
+    "firstImpact": {
+      "seconds": 0.14278431229293348,
+      "kind": "impact",
+      "contacts": [
+        {
+          "id": "a",
+          "mode": "stick",
+          "impulseNs": [
+            0.0,
+            0.0,
+            1.400714103575616
+          ],
+          "normalBeforeMps": -1.4007141035936774,
+          "normalAfterMps": -1.8061330209206972e-11,
+          "tangentAfterMps": 0.0
+        },
+        {
+          "id": "b",
+          "mode": "stick",
+          "impulseNs": [
+            0.0,
+            0.0,
+            1.400714103575616
+          ],
+          "normalBeforeMps": -1.4007141035936774,
+          "normalAfterMps": -1.8061330209206972e-11,
+          "tangentAfterMps": 0.0
+        }
+      ],
+      "kineticLossJ": 1.9620000000062392,
+      "momentumResidual": 0.0,
+      "complementarityResidual": 2.55435201918346e-11,
+      "iterations": 41
+    },
+    "lastVelocity": [
+      6.386922071008643e-169,
+      -2.606339954205775e-182,
+      -1.2650436254091346e-12,
+      0.0,
+      0.0,
+      1.2282001265630543e-183
+    ],
+    "status": "CONTACT_SCENARIO_CANDIDATE"
+  },
+  "slidingConvergence": [
+    {
+      "dtSeconds": 0.02,
+      "positionErrorM": 0.004904999999999993
+    },
+    {
+      "dtSeconds": 0.01,
+      "positionErrorM": 0.0024524999999999963
+    },
+    {
+      "dtSeconds": 0.005,
+      "positionErrorM": 0.0012262499999999288
+    }
+  ],
+  "scheduledLanding": {
+    "report": {
+      "status": "REVIEW_REQUIRED",
+      "framesIntegrated": 7,
+      "framesRequested": 7,
+      "failure": null,
+      "saturatedJoints": [],
+      "peakActuationComponent": 0.0,
+      "fixedBase": false,
+      "initialVelocitySource": "kinematic target derivative",
+      "rootActuationAllowed": false,
+      "substeps": 4,
+      "maxKeyErrorMm": 1.0,
+      "support": {
+        "transitions": [
+          {
+            "seconds": 0.0,
+            "active": []
+          },
+          {
+            "seconds": 0.15000000000000002,
+            "active": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "gapMaxM": 2.5240615345753285e-13,
+        "speedMaxMps": 5.49582601649945e-12,
+        "equationResidualMax": 3.7188600256345596e-15,
+        "contactAccelerationResidualMaxMps2": 6.647989559069788e-13,
+        "allocationMethods": [
+          "SLSQP"
+        ],
+        "schedule": [
+          {
+            "id": "0",
+            "bone": "root",
+            "localPointM": [
+              -1,
+              0,
+              0
+            ],
+            "anchorM": [
+              -1,
+              0,
+              0
+            ],
+            "startFrame": 4,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "id": "1",
+            "bone": "root",
+            "localPointM": [
+              1,
+              0,
+              0
+            ],
+            "anchorM": [
+              1,
+              0,
+              0
+            ],
+            "startFrame": 4,
+            "endFrameExclusive": 8,
+            "mu": 0.5,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "gapToleranceM": 0.0001,
+        "speedToleranceMps": 0.001
+      },
+      "activationImpacts": [
+        {
+          "seconds": 0.15000000000000002,
+          "contacts": [
+            {
+              "id": "0",
+              "mode": "stick",
+              "impulseNs": [
+                -5.496196484681952e-09,
+                0.0,
+                1.4714999999945049
+              ],
+              "normalBeforeMps": -1.4715000000000007,
+              "normalAfterMps": -5.49582601649945e-12,
+              "tangentAfterMps": 4.1359030627651384e-25
+            },
+            {
+              "id": "1",
+              "mode": "stick",
+              "impulseNs": [
+                5.4961964846819524e-09,
+                0.0,
+                1.4714999999945049
+              ],
+              "normalBeforeMps": -1.4715000000000007,
+              "normalAfterMps": -5.49582601649945e-12,
+              "tangentAfterMps": 4.1359030627651384e-25
+            }
+          ],
+          "kineticLossJ": 2.165312250000002,
+          "momentumResidual": 0.0,
+          "complementarityResidual": 7.77258570746816e-12,
+          "iterations": 41
+        }
+      ],
+      "keyMaxMm": 331.08749999975237,
+      "keyRmsMm": 191.15345725017724,
+      "targetRmsMm": 149.03568559346925,
+      "targetMaxMm": 331.08749999975237,
+      "keyErrors": [
+        {
+          "frame": 1,
+          "maxMm": 0.0
+        },
+        {
+          "frame": 4,
+          "maxMm": 1.3530843112619095e-13
+        },
+        {
+          "frame": 7,
+          "maxMm": 331.08749999975237
+        }
+      ],
+      "targetAngleMaxDeg": 2.3964161638859327e-14,
+      "maxTargetAngleDeg": 5.0,
+      "exportCollision": "NOT_CONFIGURED",
+      "flags": [
+        "KEY_DEVIATION_LIMIT"
+      ],
+      "limitations": [
+        "Prescribed initial velocity; fixed base is an external support.",
+        "Feedback tracking, not optimal control. Explicit scheduled sticking with optional inelastic activation impulses; sliding tracking and automatic contact discovery are not implemented.",
+        "Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance."
+      ]
+    },
+    "postImpactVelocity": [
+      4.1359030627651384e-25,
+      0.0,
+      -5.49582601649945e-12,
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

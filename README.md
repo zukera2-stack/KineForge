@@ -1,6 +1,6 @@
 # KineForge
 
-**Universal Physical Motion Solver — experimental 0.7.0-delta**
+**Universal Physical Motion Solver — experimental 0.7.0-epsilon**
 
 KineForge reconstructs and optimizes articulated-body motion from sparse positional keyframes. One numerical objective combines rigid forward kinematics, key fidelity, spatial curve regularity, rotational smoothness, observed joint envelopes and optional sampled inverse dynamics. It is independent of any game, editor or proprietary model.
 
@@ -49,3 +49,7 @@ Optional explicit half-open support schedules couple sticking reactions and join
 
 ### 0.7 delta: single-point impact and sliding experiment
 `simulate` accepts `kineforge.contact_simulation.v1`. Newton restitution, Coulomb stick/slip impulse and bracketed contact onset; one declared point against a static plane. Not integrated into `track`; no simultaneous impacts or full CCD. See [IMPACT.md](docs/IMPACT.md).
+
+## 0.7 epsilon — Simultaneous inelastic contacts
+
+Multi-point coupled impulses, Coulomb friction, bounded standalone simulation and optional scheduled sticking activation in tracking. No automatic contact discovery, sliding tracking, full CCD or global optimal control. See [MULTI_CONTACT.md](docs/MULTI_CONTACT.md).
