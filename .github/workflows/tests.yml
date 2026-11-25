@@ -25,3 +25,4 @@ jobs:
       - run: python examples/support_benchmark.py support_benchmark.json
       - run: python examples/impact_benchmark.py impact_benchmark.json
       - run: python examples/multi_contact_benchmark.py multi_contact_benchmark.json
+      - run: python examples/horizon_benchmark.py horizon_benchmark.json

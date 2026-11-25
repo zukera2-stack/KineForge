@@ -53,3 +53,7 @@ Optional explicit half-open support schedules couple sticking reactions and join
 ## 0.7 epsilon — Simultaneous inelastic contacts
 
 Multi-point coupled impulses, Coulomb friction, bounded standalone simulation and optional scheduled sticking activation in tracking. No automatic contact discovery, sliding tracking, full CCD or global optimal control. See [MULTI_CONTACT.md](docs/MULTI_CONTACT.md).
+
+## 0.7 Zeta — bounded horizon optimization
+
+`python solver.py optimize body.json solved.json options.json result.json` searches piecewise-constant joint torques over a small whole horizon and selects among explicitly supplied contact schedules. Independent doubled-substep verification and synthetic sparse-key analytic holdout. No automatic discovery, large-rig or game acceptance. See [HORIZON.md](docs/HORIZON.md).
