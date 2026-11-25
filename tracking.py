@@ -76,6 +76,9 @@ def track(body,clip,options):
     if kp*dt*dt>0.5 or kd*dt>0.5:raise ValueError('tracking gains too high for explicit integration step')
     from support import Schedule, allocate
     schedule=Schedule(tr,ref,options) if 'supportSchedule' in options else None
+    impact_enabled=options.get('supportActivationImpulse',False)
+    if type(impact_enabled)!=bool or (impact_enabled and schedule is None):raise ValueError('supportActivationImpulse requires supportSchedule and boolean flag')
+    impacts=[]
     s,_=ref.at(0); frames=[];sat=set();peak=0.;failure=None;gapmax=speedmax=resmax=accresmax=0.;transitions=[];previous=None;methods=set()
     def evaluate(state,time,active):
         target,acc=ref.at(time)
@@ -87,7 +90,20 @@ def track(body,clip,options):
         time=k*dt
         try:
             active=schedule.active(k,sub) if schedule is not None else [];ids=[x['id'] for x in active]
-            if ids!=previous:transitions.append({'seconds':time,'active':ids});previous=ids
+            if ids!=previous:
+                if impact_enabled and active and any(x not in (previous or []) for x in ids):
+                    from multi_contact import impulse
+                    kin=tr.kinematics(s)
+                    for item in active:
+                        pos,J,_=tr.point(kin,item['bone'],item['local'])
+                        if np.linalg.norm(pos-item['anchor'])>schedule.gap:raise ValueError('impact activation anchor mismatch: '+item['id'])
+                    s,ir=impulse(tr,s,active)
+                    impacts.append(dict(seconds=time,**ir))
+                    kin=tr.kinematics(s)
+                    for item in active:
+                        _,J,_=tr.point(kin,item['bone'],item['local'])
+                        if np.linalg.norm(J@s.v)>schedule.speed:raise ValueError('activation impact did not establish sticking: '+item['id'])
+                transitions.append({'seconds':time,'active':ids});previous=ids
             a,tau,saturated,rep=evaluate(s,time,active);sat.update(saturated);peak=max(peak,float(np.max(abs(tau))))
             gapmax=max(gapmax,rep.get('supportGapMaxM',0.));speedmax=max(speedmax,rep.get('supportSpeedMaxMps',0.));resmax=max(resmax,rep.get('residual',0.));accresmax=max(accresmax,rep.get('contactAccelerationResidualMps2',0.));methods.update([rep['allocationMethod']] if 'allocationMethod' in rep else [])
             if k%sub==0:
@@ -104,6 +120,7 @@ def track(body,clip,options):
             failure={'seconds':time,'reason':str(ex)};break
     flags=[];report={'status':'REVIEW_REQUIRED','framesIntegrated':len(frames),'framesRequested':ref.F,'failure':failure,'saturatedJoints':sorted(sat),'peakActuationComponent':peak,'fixedBase':fixed,'initialVelocitySource':'kinematic target derivative','rootActuationAllowed':False,'substeps':sub,'maxKeyErrorMm':tol}
     if schedule is not None:report['support']={'transitions':transitions,'gapMaxM':gapmax,'speedMaxMps':speedmax,'equationResidualMax':resmax,'contactAccelerationResidualMaxMps2':accresmax,'allocationMethods':sorted(methods),'schedule':copy.deepcopy(options['supportSchedule']),'gapToleranceM':schedule.gap,'speedToleranceMps':schedule.speed}
+    if impact_enabled:report['activationImpacts']=impacts
     if failure:flags.append('INTEGRATION_FAILED')
     if sat:flags.append('ACTUATOR_SATURATION')
     out=None
@@ -124,10 +141,10 @@ def track(body,clip,options):
             flags.extend(report['exportCollision']['flags'])
             if flags:report['status']='REVIEW_REQUIRED'
         else:report['exportCollision']='NOT_CONFIGURED'
-        out=copy.deepcopy(clip);out['keyframes']=[{'frame':f['frame'],'positions':f['positions']} for f in frames];out['localQuaternionXYZW']=[f['localQuaternionXYZW'] for f in frames];out['sourceKeys']=[{**x,'positions':out['keyframes'][i]['positions']} for x,i in zip(ref.keys,ref.ids)];out['solver']={'name':'KineForge 0.7 gamma tracking','diagnostics':report};out['notes']='Physical replay candidate, not game acceptance. Original author keys and timing preserved.'
+        out=copy.deepcopy(clip);out['keyframes']=[{'frame':f['frame'],'positions':f['positions']} for f in frames];out['localQuaternionXYZW']=[f['localQuaternionXYZW'] for f in frames];out['sourceKeys']=[{**x,'positions':out['keyframes'][i]['positions']} for x,i in zip(ref.keys,ref.ids)];out['solver']={'name':'KineForge 0.7 epsilon tracking','diagnostics':report};out['notes']='Physical replay candidate, not game acceptance. Original author keys and timing preserved.'
     if out is not None:
         q=np.array(out['localQuaternionXYZW']);
         for i in range(1,len(q)):q[i]*=np.where(np.sum(q[i]*q[i-1],axis=-1)<0,-1,1)[:,None]
         out['localQuaternionXYZW']=q.tolist()
-    report['flags']=flags;report['limitations']=['Prescribed initial velocity; fixed base is an external support.','Feedback tracking, not optimal control. Explicit scheduled sticking only; no impact, sliding, collision response or automatic contact discovery.','Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance.']
+    report['flags']=flags;report['limitations']=['Prescribed initial velocity; fixed base is an external support.','Feedback tracking, not optimal control. Explicit scheduled sticking with optional inelastic activation impulses; sliding tracking and automatic contact discovery are not implemented.','Tracking acceptance is limited to key error and sampled dynamics; no full motion acceptance.']
     return dict(schema='kineforge.tracking.result.v1',report=report,dof=tr.dof,frames=frames,solved=out)

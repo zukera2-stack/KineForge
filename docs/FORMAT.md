@@ -22,3 +22,7 @@ Optional coupled tracking options and scheduled sticking supports: [TRACKING.md]
 ## Contact impulse experiment (0.7 delta)
 
 The `simulate` command also accepts `kineforge.contact_simulation.v1` for one explicit point/static plane. See [IMPACT.md](IMPACT.md) for schema, event outputs and limits. This is separate from scheduled sticking tracking.
+
+## Multi-contact extension
+
+`kineforge.multi_contact_simulation.v1` and optional `supportActivationImpulse` in tracking options: see [MULTI_CONTACT.md](MULTI_CONTACT.md).
