@@ -6,7 +6,7 @@ import numpy as np
 from scipy.interpolate import CubicSpline
 from scipy.spatial.transform import Rotation as R, Slerp
 import torch
-VERSION='0.7.0-delta'
+VERSION='0.7.0-zeta'
 import dynamics
 import contact as contact_model
 import joints as joint_model
